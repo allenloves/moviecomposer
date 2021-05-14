@@ -88,7 +88,7 @@ body {
 }
 
 body, input, textarea {
-	font: 15px 'MerriweatherRegular', serif;
+	font: 20px 'Amble', serif;
 	font-weight: normal;
 	line-height: 27px;
 	background: #2e2e2e url(style/images/bg1.jpg) repeat fixed;
@@ -106,7 +106,7 @@ h5,
 h6 {
 	font-family: 'MarketDecoRegular';
 	font-weight: normal;
-	color: #ca6d6d;
+	color: #e63e00;
 }
 h1 a, 
 h2 a, 
@@ -129,10 +129,10 @@ h2 {
 h3 { 
 	font-size: 24px; 
 	line-height: 26px; 
-	margin-bottom: 15px; 
+	margin-bottom: 20px; 
 } 
 h4 { 
-	font-size: 20px; 
+	font-size: 18px; 
 	line-height: 22px; 
 	margin-bottom: 4px; 
 } 
@@ -167,7 +167,7 @@ ul {
 }
 ul li {
 	background: transparent url(style/images/dark-bullet.png) no-repeat left 13px;
-	padding-left: 15px;
+	padding-left: 20px;
 }
 ol {
 	list-style-type: decimal;
@@ -192,7 +192,7 @@ cite, em, i {
 }
 blockquote {
 	margin: 0 0 20px 0;
-	font-size: 15px;
+	font-size: 18px;
 	border-left: 5px solid #ededed;
 	padding-left: 20px;
 }
@@ -240,25 +240,25 @@ sub {
 	font-size:45px;
 	padding:0;
 	margin: 0;
-	margin:15px 8px 0 0;
+	margin:20px 8px 0 0;
 	text-transform: uppercase;
 	font-family: 'MarketDecoRegular';
 }
 
 .lite1 {
-	color: #ca6d6d;
-	border-bottom: 1px dotted #ca6d6d;
+	color: #e63e00;
+	border-bottom: 1px dotted #e63e00;
 }
 
 .lite2 {
-	border-bottom: 1px dotted #ca6d6d;
+	border-bottom: 1px dotted #e63e00;
 }
 
 .download-box, .warning-box, .info-box, .note-box {
 	clear:both;
 	margin: 0 0 20px 0;
 	text-shadow: none;
-	padding: 15px;
+	padding: 20px;
 	line-height: 17px;
 }
 .info-box {
@@ -283,7 +283,7 @@ sub {
 
 /* Links */
 a {
-	color: #ca6d6d;
+	color: #e63e00;
 	text-decoration: none;
 	-webkit-transition:all 200ms ease-in;
 	-o-transition:all 200ms ease-in;
@@ -372,8 +372,8 @@ object {
 } */
 
 .intro {
-	font-family: 'MerriweatherRegular';
-	font-size: 20px;
+	font-family: 'Amble';
+	font-size: 18px;
 	line-height: 32px;
 	color: #a0a0a0;
 	text-align: center;
@@ -476,9 +476,9 @@ object {
 	padding: 39px 0 0;
 }
 #site-title a {
-	color: #ca6d6d;
-	font-size: 30px;
-	line-height: 36px;
+	color: #e63e00;
+	font-size: 68px;
+	line-height: 68px;
 	text-decoration: none;
 }
 #site-title a img {
@@ -553,7 +553,7 @@ input#s {
     border: 1px solid #a3a3a3;
     border-right: 0;
     color: #a0a0a0;
-    font-family: 'MerriweatherRegular';
+    font-family: 'Amble';
     font-size: 12px;
     display: block;
     float: left;
@@ -575,7 +575,7 @@ input#s {
     border-right: 0;
     color: #a0a0a0;
     float: right;
-    font-family: 'MerriweatherRegular';
+    font-family: 'Amble';
     font-size: 12px;
 }
 .social input.search-submit-button {
@@ -633,7 +633,7 @@ input#s {
 	z-index: 1001;
 	height: 42px;
 	margin: 0 -9px;
-	background: #b05a5a url(style/images/menu-bg.png) repeat-x;
+	background: /*#b05a5a*/ #ff4500 url(style/images/menu-bg.png) repeat-x;
 	-webkit-box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
 	box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
@@ -641,7 +641,7 @@ input#s {
 #access .menu ul li {
 	position: relative;
 	display: inline-block;
-	padding: 0 15px;
+	padding: 0 20px;
 	z-index: 101;
 	padding-top: 8px;
 	background: none;
@@ -744,13 +744,13 @@ input#s {
 	text-align: center;
 }
 .entry-title {
-	color: #ca6d6d;
+	color: #e63e00;
 	margin: 0 0 5px 0;
 	font-size: 28px; 
 }
 .entry-title,
 .entry-title a {
-	color: #ca6d6d;
+	color: #e63e00;
 	text-decoration: none;
 }
 .entry-title a:hover {
@@ -776,7 +776,7 @@ input#s {
 	color: #a0a0a0;
 }
 .entry-meta a:hover {
-	color: #ca6d6d;
+	color: #e63e00;
 	text-decoration: none;
 }
 .entry-meta .sep {
@@ -879,7 +879,7 @@ footer.entry-meta .tags a:before{
 
 .format-quote blockquote {
 	margin: 0 0 20px 0;
-	font-size: 15px;
+	font-size: 18px;
 	border-left: 5px solid #ededed;
 	padding-left: 20px;
 }
@@ -1035,7 +1035,7 @@ footer.entry-meta .tags a:before{
 }
 
 .related-container .entry-meta {
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .related-list{
@@ -1124,7 +1124,7 @@ footer.entry-meta .tags a:before{
 .commentlist li.comment .comment-content em {
 	font-style: normal;
 	font-size: 12px;
-	color: #CA6D6D;
+	color: #e63e00;
 }
 .commentlist li.comment .comment-content h3 {
 	margin: 0;
@@ -1224,10 +1224,10 @@ input[type=text] {
 #respond .comment-form-author label,
 #respond .comment-form-email label,
 #respond .comment-form-url label {
-	color: #ca6d6d;
+	color: #e63e00;
 	display: inline-block;
 	left: 4px;
-	font-size: 15px;
+	font-size: 18px;
 	min-width: 60px;
 	padding: 4px 10px;
 	position: absolute;
@@ -1254,7 +1254,7 @@ input[type=text] {
 }
 #respond .comment-form-author .required,
 #respond .comment-form-email .required {
-	color: #ca6d6d;
+	color: #e63e00;
 	font-size: 22px;
 	left: 75%;
 	position: absolute;
@@ -1269,7 +1269,7 @@ input[type=text] {
 	margin: 20px 0 0 0;
 }
 #respond #cancel-comment-reply-link {
-	color: #ca6d6d;
+	color: #e63e00;
 	margin-left: 10px;
 	text-decoration: none;
 }
@@ -1283,7 +1283,7 @@ input[type=text] {
 	margin: 0;
 }
 #cancel-comment-reply-link {
-	color: #ca6d6d;
+	color: #e63e00;
 	display: block;
 	font-size: 12px;
 	font-weight: normal;
@@ -1291,7 +1291,7 @@ input[type=text] {
 	right: 20px;
 	text-decoration: none;
 	top: 10px;
-	font-family: 'MerriweatherRegular';
+	font-family: 'Amble';
 }
 #cancel-comment-reply-link:hover,
 #respond #cancel-comment-reply-link:hover {
@@ -1341,7 +1341,7 @@ p.form-submit {
 }
 .form-container .response {
 	display: none;
-	margin: 0 0 15px 0;
+	margin: 0 0 20px 0;
 	color:#4d8c74;
 	clear:both;
 	text-shadow: none;
@@ -1359,7 +1359,7 @@ p.form-submit {
 }
 /* form rows */
 .forms li.form-row {
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 .forms li.text-input-row {
 }
@@ -1651,7 +1651,7 @@ p.form-submit {
 }
 .widget-title {
 	font-weight: normal;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 .widget ul {
 	margin: 0;
@@ -1719,7 +1719,7 @@ p.form-submit {
 
 #twitter  ul li .entry-meta {
 	margin: 0;
-	font-size: 15px;
+	font-size: 14px;
 	color: #999;
 }
 
@@ -1754,7 +1754,7 @@ p.form-submit {
 .toggle h4.title {
 	cursor: pointer;
 	color: #6B6B6B;
-	padding: 15px 20px 12px;
+	padding: 20px 20px 12px;
 	margin: 0;
 	line-height: 1;
 	background-color: #f4f4f4;
@@ -1795,7 +1795,7 @@ ul.tabs li {
 ul.tabs li a {
 	display: block;
 	overflow: hidden;
-	padding: 13px 15px 10px 15px;
+	padding: 13px 20px 10px 20px;
 	background: #fff;
 	color: #6B6B6B;
 	font-family: 'MarketDecoRegular';
