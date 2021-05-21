@@ -993,6 +993,10 @@ footer.entry-meta .tags a:before{
 	position: absolute;
 	background: transparent url(style/images/icon-plus.png) no-repeat center center;
 }
+.play {
+	position: absolute;
+	background: transparent url(style/images/icon-play.png) no-repeat center center;
+}
 .overlay {
 	background-color: rgba(15, 15, 15, 0.6);
 }
