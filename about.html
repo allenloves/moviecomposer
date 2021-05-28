@@ -26,6 +26,11 @@
 <script type="text/javascript" src="style/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="style/js/selectnav.js"></script>
 <script type="text/javascript" src="style/js/twitter.min.js"></script>
+<script type="text/javascript" src="style/js/playsound.js"></script>
+
+<audio id="scifi1" src="style/sounds/vintagescifi.mp3" preload="auto"></audio>
+<audio id="lechute1" src="style/sounds/Lechuteclip1.mp3" preload="auto"></audio>
+
 </head>
 
 <body>
@@ -90,6 +95,7 @@
   <article class="post hentry format-image">
   	<header class="entry-header">
 		<h2 class="entry-title"><!-- <a href="post.html"> -->About</a></h2>
+		<br/>
 <!-- 		<div class="entry-meta">
       		<div class="entry-format">
         		<span class="image-format">image</span>
@@ -113,18 +119,21 @@
       </div>
       <p><b>Composer Allen Shu-Cheng Wu</b> has had an extensive career as a film composer in both Taiwan and in the United States. Career highlights include having recorded the 1929 silent film, <i>Un Chien Andalou</i>, in full surround audio; a live collaboration with the <b>Chicago Modern Orchestra</b> for the score to Renee Baker's Borderline; and a worldwide broadcast of his Laptop Improvisations with electronics, trumpet and theremin. He has also participated in multiple presentations at various international festivals around the world.</p>
       <p><b>A Fulbright scholar</b>, Allen holds a <b>doctorate in composition and theory</b> from the University of Illinois at Urbana Champaign, and, along with having taught film music at many universities in Taiwan, he also has <b>invented an AI sample synthesizer</b> called SuperSampler.</p>
-
-      <h2 class="entry-title"><!-- <a href="post.html"> -->Listen to Allen's music:</h2>
+      <br/>
+      <header class="entry-header">
+      	<h2 class="entry-title"><!-- <a href="post.html"> -->Music</h2>
+      		<br/>
+      </header>
 
             	<ul class="gallery-items">
 	      	<li class="item">
-	      		<a href="music1.html" class="view" rel="gallery"  title="Transparent Flower">
+	      		<a href="javascript:play_single_sound('lechute1');" class="view" rel="gallery"  title="Transparent Flower">
 	      			<span class="overlay play"></span>
 	      			<img src="style/images/art/gallery1.jpg" alt=""/>
 	      		</a>
 	      	</li>
 	      	<li class="item">
-	      		<a href="style/images/art/gallery2-full.jpg" class="view" rel="gallery" title="Losing Toucing Searching">
+	      		<a href="javascript:play_single_sound('scifi1');" class="view" rel="gallery" title="Losing Toucing Searching">
 	      			<span class="overlay play"></span>
 	      			<img src="style/images/art/gallery2.jpg" alt=""/>
 	      		</a>
