@@ -650,7 +650,7 @@ input#s {
 #access .menu ul li a {
 	display: inline-block;
 	text-decoration: none;
-	font-size: 14px;
+	font-size: 18px;
 	line-height: 1;
 	color: #f3f3f3;
 	-webkit-transition:all 100ms ease-in;
