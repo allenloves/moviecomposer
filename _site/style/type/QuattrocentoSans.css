@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'QuattrocentoSans';
+    src: url('Quattrocento_Sans/QuattrocentoSans-Regular.ttf') format('truetype');
+    src: url('Quattrocento_Sans/QuattrocentoSans-Regular.ttf') format('truetype'),
+     url('Quattrocento_Sans/QuattrocentoSans-Regular.ttf') format('truetype'),
+     url('Quattrocento_Sans/QuattrocentoSans-Regular.ttf') format('truetype'),
+     url('Quattrocento_Sans/QuattrocentoSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
