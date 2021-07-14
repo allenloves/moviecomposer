@@ -1,0 +1,11 @@
+- title: Ambisonic Toolkit in Kyma
+  note: a program module for 3D sound design.
+
+- title: SuperSampler
+  note: my innovation which automatically combines sounds into compositional motives.
+
+- title: Spectrum Panner
+  note: a software plugin which pans different frequencies of a sound in between speakers.
+
+- title: FM Calculator
+  note: a simple program that calculates frequency content of a frequency modulated sine wave.

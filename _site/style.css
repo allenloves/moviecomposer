@@ -874,6 +874,11 @@ footer.entry-meta .tags a:before{
 	padding: 0;
 }
 
+.entry-content-center {
+	padding: 0;
+	text-align: center;
+}
+
 /* =Quote
 ----------------------------------------------- */
 

@@ -4,14 +4,12 @@ layout: default
 
   <article class="post hentry format-image">
   <header class="entry-header">
-  <h2>Software</h2>
+  <h2>Software Development</h2>
+  <br/>
   </header>
-  <div class="entry-content">
-    <ul>
-      <li><strong>Ambisonic Toolkit in Kyma:</strong> a program module for Kyma users to incorporate 3D audio in their sound design.</li>
-      <li><strong>SuperSampler:</strong> my innovation which automatically combines sounds into compositional motives.</li>
-      <li><strong>Spectrum Panner:</strong> A software plugin which pans different frequencies of a sound to different locations between speakers</li>
-      <li><strong>FM Calculator:</strong> A simple program that calculates frequency content of a frequency modulated sine wave.</li>
-    </ul>  
+  <div class="entry-content-center">
+    {% for item in site.data.software %}
+      <p><strong><i>{{item.title}},</i></strong> {{item.note}}</p>
+    {% endfor %}
   </div>
   </article>

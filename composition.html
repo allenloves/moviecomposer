@@ -4,43 +4,15 @@ layout: default
 
     <article class="post hentry format-image">
     <header class="entry-header">
-    <h2>Composition</h2>
+    <h2>Concert Works</h2>
+    <br/>
     </header>
-    <div class="entry-content">
-      <ul>
-        <li><strong>Traps</strong> for For Channel Audio System, Wecom Tablet, and Kyma 2019</li>
-        <li>Sound Track for <strong>Un Chien Andalou</strong> for Eight Channel Audio System 2018</li>
-        <li><strong>Shadow’s Shadow</strong> for Four Channel Audio System with with Leap Motion, Linnstrument, and Kyma 2018</li>
-        <li><strong>UniversesrevinU</strong> for Four Channel Audio System with Leap Motion, Linnstrument, and Kyma  2018</li>
-        <li><strong>Canción”</strong> for Vocal Baritone and Piano  2018</li>
-        <li><strong>Love Birds</strong> for Trombone and Two Channel Audio System  2016</li>
-        <li><strong>Le Chute</strong> for Eight Channel Audio System 2015</li>
-        <li><strong>Binbinlayan</strong> for Children’s Choir  2014</li>
-        <li><strong>ZauberClavier</strong> for Piano and Two Channel Audio System  2014</li>
-        <li><strong>Bring in the Wine</strong> for Soprano and Piano  2013</li>
-        <li><strong>Woods</strong> for Two Percussionists  2013</li>
-        <li><strong>Axonometric Projection</strong> for Eight Channel Audio System 2013</li>
-        <li><strong>Uno Canto</strong> for 4–7 Singers in a UNO game 2012</li>
-        <li><strong>Plots</strong> for 5.1 Channel Audio System  2012</li>
-        <li><strong>Deì</strong> for Two Piano and Two Theremin  2012</li>
-        <li><strong>Uniformity Theory</strong> for Four Channel Audio System 2012</li>
-        <li><strong>Synchronicity</strong> for Piano Septet  2012</li>
-        <li>Music for Theremin for Four Channel Audio System and Video with Max/MSP 2011</li>
-        <li><strong>Wondering Beyond</strong> for Two Channel Audio System 2011</li>
-        <li><strong>Cycle</strong> for SATB Voice Quartet  2011</li>
-        <li><strong>For Flute Solo</strong> for Solo Flute 2011</li>
-        <li>Interactive Piece for SuperCollider, Theremin, and DiscKlavier  2010</li>
-        <li><strong>Roller Coaster</strong> for K2000 Synthesizer  2010</li>
-        <li><strong>Legend of Light</strong> for Two Channel Audio System  2010</li>
-        <li><strong>“Wondering</strong> for Violin and Piano  2010</li>
-        <li><strong>Library</strong> for Solo Piano  2010</li>
-        <li>Algorithmic composition for UIUC Carillon 2009</li>
-        <li>Trio for Violin, Viola, and Bassoon 2009</li>
-        <li>Duet for two Clarinets  2009</li>
-        <li><strong>Melody</strong> for Solo Theremin  2009</li>
-        <li><strong>Call Me</strong> for Violin and Max/MSP  2009</li>
-        <li>Sound Track for short film <strong>God Zone</strong> 2008</li>
-      </ul>  
+    <div class="entry-content-center">
+        {% for item in site.data.composition %}
+        <p><strong><i>{{item.title}},</i></strong> for {{item.instrument}}, {{item.year}}<br/>
+          {% if item.performed %}performed in {{item.performed}}{% endif %}
+        </p>
+        {% endfor %}
     </div>
     
   </article>
