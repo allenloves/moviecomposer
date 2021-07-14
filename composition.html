@@ -10,7 +10,7 @@ layout: default
     <div class="entry-content-center">
         {% for item in site.data.composition %}
         <p><strong><i>{{item.title}},</i></strong> for {{item.instrument}}, {{item.year}}<br/>
-          {% if item.performed %}performed in {{item.performed}}{% endif %}
+          {% if item.performed %}<i>performed in {{item.performed}}</i>{% endif %}
         </p>
         {% endfor %}
     </div>
