@@ -10,7 +10,7 @@ layout: default
     <div class="entry-content-center">
         {% for item in site.data.composition %}
         <p><strong><i>{{item.title}},</i></strong> for {{item.instrument}}, {{item.year}}<br/>
-          {% if item.performed %}<i>performed in {{item.performed}}</i>{% endif %}
+          {% if item.performed %}<i> performed in {% for itm in item.performed %}<!-- {% if forloop.last == true %}and {% endif %} -->{{itm.facility}}, {{itm.city}}, {{itm.state}}, {{itm.date}}{% if forloop.last == false %}, {% else %}{% endif %}{% endfor %}</i>{% endif %}
         </p>
         {% endfor %}
     </div>
