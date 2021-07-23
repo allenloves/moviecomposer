@@ -311,7 +311,7 @@ input#submit,
 	-webkit-transition:all 200ms ease-in;
 	-o-transition:all 200ms ease-in;
 	-moz-transition:all 200ms ease-in;
-	font-size: 12px;
+	font-size: 20px;
 	line-height: 25px;
 }
 
@@ -1856,7 +1856,7 @@ ul.tabs:after {
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 input#submit,
 .forms fieldset .btn-submit  {
-	height: 28px;
+	height: 50px;
 }
 a.button,
 .page-navi li a,

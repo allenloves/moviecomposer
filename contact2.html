@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+  <!-- begin article -->
+  <article class="page hentry">
+  	<header class="entry-header">
+		<h1 class="entry-title"><a href="#">Contact</a></h1>
+		<br/>
+    </header>
+    <!-- .entry-header -->
+    
+    <!-- Begin Form -->
+    <div class="form-container">
+      <div class="response"></div>
+      <form class="forms" action="https://formspree.io/f/xeqvlwkk" method="POST">
+        <fieldset>
+          <ol>
+            <li class="form-row text-input-row">
+              <input type="text" name="_name" class="text-input defaultText required" title="Name (Required)"/>
+            </li>
+            <li class="form-row text-input-row">
+              <input type="email" name="_replyto" class="text-input defaultText required email" title="Email (Required)"/>
+            </li>
+            <!-- <li class="form-row text-input-row">
+              <input type="text" name="subject" class="text-input defaultText" title="Subject"/>
+            </li> -->
+            <li class="form-row text-area-row">
+              <textarea name="_message" class="text-area required" title= "Message"></textarea>
+            </li>
+            <li class="form-row hidden-row">
+              <input type="hidden" name="hidden" value="" />
+            </li>
+            <li class="button-row">
+              <input type="submit" value="Submit" name="submit" class="btn-submit" />
+            </li>
+          </ol>
+          <input type="hidden" name="v_error" id="v-error" value="Required" />
+          <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
+        </fieldset>
+      </form>
+    </div>
+    <!-- End Form -->
+        
+
+ 	</div>
+    <!-- .entry-content -->
+    
+  </article>
+  <!-- end article -->
+  

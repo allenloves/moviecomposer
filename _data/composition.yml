@@ -5,16 +5,16 @@
     - facility: Daedong College
       city: Busan
       state: South Korea
-      date: Aug. 2019
+      date: 8/2019
 
 - title: Shadow’s Shadow
   instrument: four channel audio with hand motion sensors
   year: 2018
   performed: 
-    - facility: UC Santa Cruz
-      city: Santa Cruz
-      state: CA
-      date: Sep. 2018
+    - facility: the University of California Santa Cruz
+      city:
+      state: 
+      date: 9/2018
 
 - title: UniversesrevinU
   instrument: four channel audio with hand motion sensors
@@ -22,45 +22,45 @@
   performed: 
     - facility: Symbolic Sound Co.
       city: Urbana-Champaign
-      state: IL
-      date: May 2018
+      state: 
+      date: 5/2018
 
 - title: Canción
   instrument: vocal baritone and piano
   year: 2018
   performed: 
-    - facility: Univeristy of Illinois at Urbana-Champaign
-      city: Urbana
-      state: IL
-      date: Jan. 2018
+    - facility: the University of Illinois at Urbana-Champaign
+      city: 
+      state: 
+      date: 1/2018
 
 - title: Love Birds
   instrument: trombone with computer-generated audio
   year: 2016
   performed: 
-    - facility: Univeristy of Illinois at Urbana-Champaign
-      city: Urbana
-      state: IL
-      date: Dec. 2016
+    - facility: the University of Illinois at Urbana-Champaign
+      city: 
+      state: 
+      date: 12/2016
 
 - title: Le Chute
   instrument: four channel audio
   year: 2015
   performed: 
-    - facility: Kansas Community College
-      city: Kansas City
-      state: KS
-      date: Nov. 2015
+    - facility: Kansas City Kansas Community College
+      city: 
+      state: 
+      date: 11/2015
 
-    - facility: University of North Texas
+    - facility: the University of North Texas
       city: Denton
       state: TX
-      date: Sep. 2015
+      date: 9/2015
 
     - facility: Kainan University
       city: Taoyuan
       state: Taiwan
-      date: Dec. 2016
+      date: 12/2016
 
 
 - title: Binbinlayan
@@ -72,10 +72,10 @@
   instrument: piano with computer-generated audio
   year: 2014
   performed: 
-    - facility: Univeristy of Illinois at Urbana-Champaign
-      city: Urbana
-      state: IL
-      date: Mar. 2016
+    - facility: the University of Illinois at Urbana-Champaign
+      city: 
+      state: 
+      date: 3/2016
 
 - title: Bring in the Wine
   instrument: soprano and piano
@@ -91,19 +91,19 @@
   instrument: eight channel audio
   year: 2013
   performed: 
-    - facility: University of Athens
-      city: Athens
+    - facility: the University of Athens
+      city: 
       state: Greece
-      date: Sep. 2014
+      date: 9/2014
 
 - title: Uno Canto
   instrument: four to seven voices
   year: 2012
   performed: 
-    - facility: Univeristy of Illinois at Urbana-Champaign
-      city: Urbana
-      state: IL
-      date: Sep. 2012
+    - facility: the University of Illinois at Urbana-Champaign
+      city: 
+      state: 
+      date: 9/2012
 
 - title: Deì
   instrument: two theremins and two pianos
@@ -129,7 +129,7 @@
   instrument: flute
   year: 2010
   performed: 
-    - facility: Univeristy of Illinois at Urbana-Champaign
-      city: Urbana
-      state: IL
-      date: May 2013
+    - facility: the University of Illinois at Urbana-Champaign
+      city: 
+      state: 
+      date: 5/2013
