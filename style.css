@@ -56,6 +56,8 @@ blockquote, q {
 a img {
 	border: 0;
 }
+
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -966,10 +968,12 @@ footer.entry-meta .tags a:before{
 	padding: 0;
 }
 
+
 .gallery-items li.item img{
 	display: block;
 	max-width: 100%;
 }
+
 
 .gallery-items:after {
 	content: '';
@@ -991,10 +995,14 @@ footer.entry-meta .tags a:before{
 	display: block;
 	position: relative;
 }
+
+
 .gallery-items li.item img {
 	display: block;
 	position: relative;
 }
+
+
 .gallery-items li.item a span {
 	display: none;
 	height: 100%;
@@ -1003,6 +1011,8 @@ footer.entry-meta .tags a:before{
 	width: 100%;
 	z-index: 100;
 }
+
+
 .zoom {
 	position: absolute;
 	background: transparent url(style/images/icon-plus.png) no-repeat center center;
