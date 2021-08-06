@@ -957,13 +957,12 @@ footer.entry-meta .tags a:before{
 ----------------------------------------------- */
 
 .gallery-items {
-	margin: 0 -40px 20px;
-	
+	margin: 0px 0px 20px;
 }
 
 .gallery-items li.item {
-	float: left;
-	width: 20%;
+	float: center;
+	width: 100%;
 	background: none;
 	padding: 0;
 }
@@ -1411,7 +1410,7 @@ p.form-submit {
 	border: 1px solid #dedede;
 	padding: 10px;
 	color: #606060;
-	width: 75%;
+	width: 90%;
 	height: 20px;
 }
 
