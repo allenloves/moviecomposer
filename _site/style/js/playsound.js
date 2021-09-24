@@ -4,7 +4,7 @@ var notPlaying = true, playingSound = 0, playingID = 0;
 
 
 function play_single_sound(id) {
-	if(notPlaying){
+	if(notPlaying){ //start playing
 			playingSound = document.getElementById(id);
 			playingID = id;
 			playingSound.play();
@@ -12,11 +12,11 @@ function play_single_sound(id) {
 		}
 	else {
 			playingSound.pause();
-			if(playingID == id){
-				playingSound.currentTime = 0;
+			if(playingID == id){  //click to pause
+				//playingSound.currentTime = 0;  //rewind to beginning
 				notPlaying = true;
 			}
-			else {
+			else { //click another piece
 				playingSound.currentTime = 0;
 				playingSound = document.getElementById(id);
 				playingID = id;
