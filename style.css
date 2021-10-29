@@ -300,7 +300,7 @@ a:hover {
 a.button,
 input#submit,
 .forms fieldset .btn-submit  {
-	background: #555 url(style/images/button-bg.png) repeat-x;
+	background: #2c70c2 url(style/images/button-bg.png) repeat-x;
 	height: 28px;
 	display: inline-block;
 	padding: 0 17px;
@@ -1145,7 +1145,7 @@ footer.entry-meta .tags a:before{
 }
 .commentlist li.comment .comment-content {
 	margin: 0 0 0 100px;
-	background-color: #f4f4f4;
+	background-color: #DBCFC0;
 	padding: 20px;
 }
 .commentlist li.comment .comment-content em {
