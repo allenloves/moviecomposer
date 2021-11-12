@@ -40,6 +40,18 @@ $(document).ready(function() {
         });
     }
     });
+
+ $(document).ready(function() {
+ if(!(navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i))) {
+        $('li.comment .avatar').mouseenter(function(e) {
+        	
+            $(this).children('a').children('span').fadeIn(300);
+        }).mouseleave(function(e) {
+
+            $(this).children('a').children('span').fadeOut(400);
+        });
+    }
+    });
     
 /*-----------------------------------------------------------------------------------*/
 /*	SOCIAL HOVER

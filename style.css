@@ -125,7 +125,7 @@ h1 {
 }
 h2 { 
 	font-size: 28px; 
-	line-height: 30px; 
+	line-height: 0px; 
 	margin-bottom: 10px; 
 }
 h3 { 
@@ -1135,7 +1135,7 @@ footer.entry-meta .tags a:before{
 	margin: 0 auto;
 	width: 100%;
 }
-.commentlist > li.comment {
+.commentlist li.comment {
 	margin: 0 0 20px;
 	position: relative;
 }
@@ -1143,6 +1143,21 @@ footer.entry-meta .tags a:before{
 	width: 152px;
 	float: left;
 }
+
+.commentlist li.comment .avatar img {
+	display: block;
+	position: relative;
+}
+
+.commentlist li.comment .avatar a span {
+	display: none;
+	height: 100%;
+	position: absolute;
+	text-decoration: none;
+	width: 152px;
+	z-index: 100;
+}
+
 .commentlist li.comment .comment-content {
 	margin: 0 0 0 100px;
 	background-color: #DBCFC0;
@@ -1353,7 +1368,7 @@ p.form-submit {
 
 .form-container {
 	overflow: hidden;
-	background: #f4f4f4;
+	background: #DBCFC0;
 	padding: 25px;
 	position: relative;
 }
@@ -1410,7 +1425,7 @@ p.form-submit {
 	border: 1px solid #dedede;
 	padding: 10px;
 	color: #606060;
-	width: 90%;
+	width: 96%;
 	height: 20px;
 }
 
@@ -1418,7 +1433,7 @@ p.form-submit {
 	background: #fff;
 	border: 1px solid #dedede;
 	color: #606060;
-	width: 90%;
+	width: 96%;
 	height: 200px;
 	padding: 10px;
 }
