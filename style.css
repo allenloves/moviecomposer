@@ -1162,7 +1162,17 @@ footer.entry-meta .tags a:before{
 	margin: 0 0 0 100px;
 	background-color: #DBCFC0;
 	padding: 20px;
+	cursor:  pointer;
 }
+
+.commentlist li.comment .comment-content .progress {
+	background-color: #3B77BE;
+	border-radius: 5px;
+	height:  100%;
+	width:  0%;
+	transition: width 0.1s linear;
+}
+
 .commentlist li.comment .comment-content em {
 	font-style: normal;
 	font-size: 12px;
