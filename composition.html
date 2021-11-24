@@ -14,7 +14,7 @@ layout: default
     <div class="entry-content-center">
         {% for item in site.data.composition %}
         <p><strong><i>{{item.title}},</i></strong> for {{item.instrument}}, {{item.year}}<br/>
-          {% if item.performed %}<i> performed at {% for itm in item.performed %}{% if item.performed.size > 1 and forloop.last == true %}and {% endif %}{{itm.facility}}{% if itm.city %}, {{itm.city}}{% endif %}{% if itm.state %}, {{itm.state}}{% endif %}, {{itm.date}}{% if forloop.last == false %}; {% else %}{% endif %}{% endfor %}</i>{% endif %}
+          {% if item.performed %}<i> performed at {% for itm in item.performed %}{% if item.performed.size > 1 and forloop.last == true %}and {% endif %}{{itm.facility}}{% if itm.city %}, {{itm.city}}{% endif %}{% if itm.state %}, {{itm.state}}{% endif %}, {{itm.date}}{% if forloop.last == false %},<br/> {% else %}{% endif %}{% endfor %}</i>{% endif %}
         </p>
         {% endfor %}
     </div>

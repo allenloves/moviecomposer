@@ -3,11 +3,17 @@ layout: default
 ---
 
 <!-- begin article -->
-<article class="page hentry">
+<article class="page hentry" style = "margin: 0;">
   	<header class="entry-header">
 		<h1 class="entry-title"><a href="#">Music</a></h1>
     </header>
+    <div id="crumbs" style = "padding: 0; margin: 0;">
+			<h4>
+				<p style="color:#2c70c2;">(Click on photo to play)</p>
+			</h4>
+		</div>
 </article>
+
     <!-- .entry-header -->   
 
 <div id="comments">
@@ -22,11 +28,9 @@ layout: default
 						</div>
 						<div class="comment-content" id= "lechute1click" style="margin-left: 180px !important;" >
 							<p><b>Amorphous</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/Lechuteclip1.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "lechute1progress"/>
+							<div class = "progress-holder">
+								<div class = "progress" id = "lechute1progress"/>
+							</div>
 							<br/>
 						</div>
 				</li>
@@ -40,18 +44,13 @@ layout: default
 										<img src="style/images/art/gallery8.jpg" alt=""/>
 									</a>
 						</div>
-			
 						<div class="comment-content" id="ensemble1click" style="margin-left: 180px !important;" >
-						<!-- <h3><a href='#'>Marshall Eriksen</a></h3> -->
 							<p><b>Wondrous</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/ensemble1.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "ensemble1progress"/>
+							<div class = "progress-holder">
+								<div class = "progress" id = "ensemble1progress"/>
+							</div>
 							<br/>
-						</div>													
-
+						</div>
 				</li>
 
 
@@ -59,19 +58,16 @@ layout: default
 
 						<div class="avatar">
 									<a href="javascript:play_single_sound('chase');" class="view" rel="gallery" title="Chase">
-										<span class="overlay play"></span>
+										<span class="overlay play"/></span>
 										<img src="style/images/art/gallery4.jpg" alt=""/>
 									</a>
 						</div>
 			
 						<div class="comment-content" id="chaseclick" style="margin-left: 180px !important;" >
-						<!-- <h3><a href='#'>Marshall Eriksen</a></h3> -->
 							<p><b>Puzzle Chase</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/chase1.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "chaseprogress"/>
+							<div class = "progress-holder">
+								<div class = "progress" id = "chaseprogress"/>
+							</div>
 							<br/>
 						</div>													
 
@@ -85,13 +81,10 @@ layout: default
 				      		</a>
 						</div>
 						<div class="comment-content" id="axonoclick" style="margin-left: 180px !important;" >
-						<!-- <h3><a href='#'>Marshall Eriksen</a></h3> -->
 							<p><b>Opening</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/axono.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "axonoprogress"/>
+							<div class="progress-holder">
+								<div class = "progress" id = "axonoprogress"/>
+							</div>
 							<br/>
 						</div>
 				</li>
@@ -106,13 +99,10 @@ layout: default
 						</div>
 			
 						<div class="comment-content" id="fluteclick" style="margin-left: 180px !important;" >
-						<!-- <h3><a href='#'>Marshall Eriksen</a></h3> -->
 							<p><b>Mystique</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/flute.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "fluteprogress"/>
+							<div class="progress-holder">
+								<div class = "progress" id = "fluteprogress"/>
+							</div>
 							<br/>
 						</div>													
 
@@ -128,13 +118,10 @@ layout: default
 						</div>
 			
 						<div class="comment-content" id="fightclick" style="margin-left: 180px !important;" >
-						<!-- <h3><a href='#'>Marshall Eriksen</a></h3> -->
 							<p><b>Air Fight</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/fight.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-						<div class = "progress" id = "fightprogress"/>
+						<div class="progress-holder">
+							<div class = "progress" id = "fightprogress"/>
+						</div>
 						<br/>
 						</div>													
 				</li>
@@ -151,13 +138,10 @@ layout: default
 						</div>
 			
 						<div class="comment-content" id="violinclick" style="margin-left: 180px !important;" >
-						<!-- <h3><a href='#'>Marshall Eriksen</a></h3> -->
 							<p><b>Tender</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/violin.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "violinprogress"/>
+							<div class="progress-holder">
+								<div class = "progress" id = "violinprogress"/>
+							</div>
 							<br/>
 						</div>													
 
@@ -173,11 +157,9 @@ layout: default
 						</div>			
 						<div class="comment-content" id="scifi1click" style="margin-left: 180px !important;" >
 							<p><b>Swirling</b></p>
-<!-- 		      		<audio controls style="width: 730px;">>
-							  <source src="style/sounds/vintagescifi.mp3">
-							  Your browser does not support the audio tag.
-							</audio> -->
-							<div class = "progress" id = "scifi1progress"/>
+							<div class="progress-holder">
+								<div class = "progress" id = "scifi1progress"/>
+							</div>
 							<br/>
 						</div>													
 

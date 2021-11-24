@@ -734,8 +734,8 @@ input#s {
 
 .hentry {
 	position: relative;
-	padding-bottom: 20px;
-	margin-bottom: 40px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
 	background: transparent /*url(style/images/line.png)*/ repeat-x center bottom;
 }
 
@@ -1163,6 +1163,23 @@ footer.entry-meta .tags a:before{
 	background-color: #DBCFC0;
 	padding: 20px;
 	cursor:  pointer;
+}
+
+.commentlist li.comment .comment-content .progress-holder {
+	background-color: #ffffff00;
+	border:  1px solid;
+	border-color: #3B77BE;
+	border-radius: 5px;
+	height:  25px;
+	width:  100%;
+}
+
+.commentlist li.comment .comment-content .progress-holder .progress {
+	background-color: #3B77BE;
+	border-radius: 5px;
+	height:  100%;
+	width:  0%;
+	transition: width 0.1s linear;
 }
 
 .commentlist li.comment .comment-content .progress {
