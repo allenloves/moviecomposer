@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聲音藝術教學平台 | Sound Art Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero .description {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .wave-emoji {
+            font-size: 1.2em;
+            display: inline-block;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: -30px auto 0;
+            padding: 0 20px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation Cards */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+            line-height: 1;
+        }
+
+        .card-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card-subtitle {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .card-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .meta-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .features h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .feature-text {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            transition: border-color 0.3s;
+        }
+
+        footer a:hover {
+            border-bottom-color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .hero .description {
+                font-size: 1em;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                padding: 30px 20px;
+            }
+
+            .features h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        /* Animation */
+        .nav-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .nav-card:nth-child(1) { animation-delay: 0.1s; }
+        .nav-card:nth-child(2) { animation-delay: 0.2s; }
+        .nav-card:nth-child(3) { animation-delay: 0.3s; }
+        .nav-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>🎵 聲音藝術教學平台</h1>
+            <p class="subtitle">Sound Art Education Platform</p>
+            <p class="description">
+                探索聲音藝術的無限可能，從歷史演進到當代實踐，從理論知識到創作實務。
+                這裡集結了完整的聲音藝術學習資源，帶你進入聲音創作的奇妙世界。
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav-grid">
+            <!-- Card 1: Timeline -->
+            <a href="sound_art_history.html" class="nav-card">
+                <span class="card-icon">🔊</span>
+                <h2 class="card-title">聲音藝術時間軸</h2>
+                <p class="card-subtitle">Sound Art Timeline</p>
+                <p class="card-description">
+                    從1913年Duchamp的機遇音樂到2013年當代聲音藝術，完整回顧100年聲音藝術發展史。包含早期先驅、戰後實驗、Fluxus運動到當代創作。
+                </p>
+                <div class="card-meta">
+                    <span class="meta-tag">1913-2013</span>
+                    <span class="meta-tag">歷史脈絡</span>
+                    <span class="meta-tag">藝術家介紹</span>
+                </div>
+            </a>
+
+            <!-- Card 2: Soundwalk -->
+            <a href="soundwalk_artists.html" class="nav-card">
+                <span class="card-icon">🚶</span>
+                <h2 class="card-title">聲音漫步作品集</h2>
+                <p class="card-subtitle">Soundwalk Collection</p>
+                <p class="card-description">
+                    探索Max Neuhaus、Hildegard Westerkamp、Janet Cardiff等聲音漫步先驅的經典作品。從1960年代至今的聲音漫步藝術發展全記錄。
+                </p>
+                <div class="card-meta">
+                    <span class="meta-tag">聲音漫步</span>
+                    <span class="meta-tag">場域特定</span>
+                    <span class="meta-tag">互動體驗</span>
+                </div>
+            </a>
+
+            <!-- Card 3: Installations -->
+            <a href="sound_art_installations.html" class="nav-card">
+                <span class="card-icon">🎛️</span>
+                <h2 class="card-title">聲音裝置資料庫</h2>
+                <p class="card-subtitle">Sound Installation Database</p>
+                <p class="card-description">
+                    收錄從1930年代至2024年的互動聲音裝置作品。涵蓋技術規格、互動設計、展覽資訊，包含teamLab、Zimoun等當代重要藝術家。
+                </p>
+                <div class="card-meta">
+                    <span class="meta-tag">互動裝置</span>
+                    <span class="meta-tag">技術分析</span>
+                    <span class="meta-tag">1930s-2024</span>
+                </div>
+            </a>
+
+            <!-- Card 4: Proposal Form -->
+            <a href="sound_art_proposal_form.html" class="nav-card">
+                <span class="card-icon">📝</span>
+                <h2 class="card-title">創作企劃工具</h2>
+                <p class="card-subtitle">Project Proposal Tool</p>
+                <p class="card-description">
+                    專業的聲音藝術企劃案表單，協助你完整規劃作品概念、技術規格、空間配置、預算與時程。適用於展覽提案、創作補助申請。
+                </p>
+                <div class="card-meta">
+                    <span class="meta-tag">企劃工具</span>
+                    <span class="meta-tag">可列印</span>
+                    <span class="meta-tag">專業表單</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <h2>平台特色 Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">📚</span>
+                    <h3 class="feature-title">完整歷史脈絡</h3>
+                    <p class="feature-text">從未來主義到當代創作，系統性介紹聲音藝術百年發展</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎨</span>
+                    <h3 class="feature-title">多元作品類型</h3>
+                    <p class="feature-text">涵蓋裝置、表演、聲音漫步、場域特定等各種形式</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔗</span>
+                    <h3 class="feature-title">豐富外部資源</h3>
+                    <p class="feature-text">提供YouTube、Vimeo、官方網站等多媒體連結</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚙️</span>
+                    <h3 class="feature-title">技術規格詳解</h3>
+                    <p class="feature-text">深入分析硬體設備、軟體工具與互動設計</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>📖 本平台為聲音藝術教學資源，內容整理自學術文獻與藝術家官方資料</p>
+            <p>參考文獻：Thom Holmes《Sound Art: Concepts and Practices》、Brandon LaBelle《Background Noise》</p>
+            <p style="margin-top: 15px; opacity: 0.8;">2024 Sound Art Education Platform | 所有作品版權歸原創作者所有</p>
+        </footer>
+    </div>
+</body>
+</html>

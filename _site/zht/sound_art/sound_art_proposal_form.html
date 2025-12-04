@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聲音藝術企劃案 Sound Art Project Proposal</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --light-bg: #f8f9fa;
+            --border: #dee2e6;
+            --text: #333;
+            --hint: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text);
+            background: #eef2f7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        header .subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .form-body {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header .icon {
+            font-size: 16px;
+        }
+
+        .section-content {
+            padding: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            width: 120px;
+            min-width: 120px;
+            padding: 10px 12px;
+            background: var(--light-bg);
+            border-radius: 6px;
+            font-size: 13px;
+            margin-right: 12px;
+        }
+
+        .form-label .en {
+            display: block;
+            font-size: 11px;
+            color: var(--hint);
+            margin-top: 2px;
+        }
+
+        .form-input {
+            flex: 1;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: var(--hint);
+            margin-top: 4px;
+        }
+
+        .inline-inputs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .inline-inputs .input-group {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .inline-inputs label {
+            display: block;
+            font-size: 12px;
+            color: var(--hint);
+            margin-bottom: 4px;
+        }
+
+        /* Checkbox Group */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: var(--light-bg);
+            transition: background 0.2s;
+            font-size: 13px;
+        }
+
+        .checkbox-item:hover {
+            background: #e9ecef;
+        }
+
+        .checkbox-item input {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        .checkbox-item.has-other {
+            background: transparent;
+            padding-left: 0;
+        }
+
+        .checkbox-item.has-other input[type="text"] {
+            width: 120px;
+            padding: 4px 8px;
+            font-size: 13px;
+        }
+
+        /* Spatial Layout Drawing Area */
+        .drawing-area {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fafbfc;
+            position: relative;
+        }
+
+        .drawing-area .placeholder {
+            text-align: center;
+            color: var(--hint);
+        }
+
+        .drawing-area .placeholder .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .drawing-hint {
+            font-size: 12px;
+            color: var(--hint);
+            margin-top: 8px;
+        }
+
+        /* Budget Table */
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .budget-table th {
+            background: var(--light-bg);
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .budget-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .budget-table input {
+            width: 100%;
+        }
+
+        .budget-table .col-item { width: 25%; }
+        .budget-table .col-desc { width: 35%; }
+        .budget-table .col-qty { width: 12%; text-align: center; }
+        .budget-table .col-amount { width: 18%; text-align: right; }
+        .budget-table .col-action { width: 10%; text-align: center; }
+
+        .budget-table .amount-input {
+            text-align: right;
+        }
+
+        .budget-table .qty-input {
+            text-align: center;
+        }
+
+        .budget-row {
+            transition: background 0.2s;
+        }
+
+        .budget-row:hover {
+            background: #f8f9fa;
+        }
+
+        .btn-remove {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-remove:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .budget-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px solid var(--primary);
+        }
+
+        .btn-add {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background: #2980b9;
+        }
+
+        .total-display {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .total-display span {
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        /* Timeline Table */
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .timeline-table th {
+            background: var(--light-bg);
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .timeline-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-table .phase-cell {
+            background: var(--light-bg);
+            font-weight: 500;
+            width: 20%;
+        }
+
+        .timeline-table .period-cell {
+            width: 25%;
+        }
+
+        .timeline-table .tasks-cell {
+            width: 55%;
+        }
+
+        /* Appendix Checkboxes */
+        .appendix-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .appendix-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
+
+        .appendix-item input[type="url"] {
+            flex: 1;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 30px;
+            background: var(--light-bg);
+        }
+
+        .btn-print {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-print:hover {
+            background: #1a252f;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: white;
+            color: var(--text);
+            border: 2px solid var(--border);
+            padding: 14px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: border-color 0.2s;
+        }
+
+        .btn-reset:hover {
+            border-color: var(--primary);
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+                font-size: 11pt;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            header {
+                background: white !important;
+                color: black !important;
+                padding: 0 0 15px 0;
+                border-bottom: 3px solid black;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            header h1 {
+                font-size: 22pt;
+            }
+
+            header .subtitle {
+                color: #666 !important;
+            }
+
+            .form-body {
+                padding: 15px 0;
+            }
+
+            .section {
+                border: 1px solid #333;
+                margin-bottom: 15px;
+                page-break-inside: avoid;
+            }
+
+            .section-header {
+                background: #333 !important;
+                color: white !important;
+                padding: 8px 12px;
+                font-size: 11pt;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-content {
+                padding: 12px;
+            }
+
+            .form-label {
+                background: #f0f0f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="url"],
+            input[type="number"],
+            textarea {
+                border: none;
+                border-bottom: 1px solid #999;
+                border-radius: 0;
+                padding: 4px 2px;
+                min-height: 20px;
+            }
+
+            textarea {
+                border: 1px solid #999;
+                min-height: 80px;
+            }
+
+            .checkbox-item {
+                background: none !important;
+                padding: 2px 8px;
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .drawing-area {
+                min-height: 280px;
+                border: 1px solid #333;
+                background: white !important;
+            }
+
+            .drawing-area .placeholder {
+                display: none;
+            }
+
+            .drawing-area::after {
+                content: "空間配置圖繪製區 Spatial Layout Drawing Area";
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-size: 10pt;
+                color: #999;
+            }
+
+            .budget-table th,
+            .timeline-table th {
+                background: #e0e0e0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .budget-table input,
+            .timeline-table input {
+                border: none;
+                border-bottom: 1px dotted #999;
+            }
+
+            .btn-remove,
+            .btn-add,
+            .actions {
+                display: none !important;
+            }
+
+            .budget-footer {
+                justify-content: flex-end;
+            }
+
+            .total-display {
+                font-size: 12pt;
+            }
+
+            /* Page breaks */
+            .section-spatial {
+                page-break-before: always;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-label {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+
+            .inline-inputs {
+                flex-direction: column;
+            }
+
+            .inline-inputs .input-group {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>聲音藝術企劃案</h1>
+        <div class="subtitle">Sound Art Project Proposal</div>
+    </header>
+
+    <form id="proposalForm" class="form-body">
+        
+        <!-- Section 1: Basic Info -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📋</span>
+                1. 基本資訊 Basic Information
+            </div>
+            <div class="section-content">
+                <div class="form-row">
+                    <div class="form-label">作品名稱<span class="en">Title</span></div>
+                    <div class="form-input">
+                        <input type="text" name="title" placeholder="請輸入作品名稱">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">副標題<span class="en">Subtitle</span></div>
+                    <div class="form-input">
+                        <input type="text" name="subtitle" placeholder="選填">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">創作者<span class="en">Artist</span></div>
+                    <div class="form-input">
+                        <input type="text" name="artist" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">聯絡方式<span class="en">Contact</span></div>
+                    <div class="form-input">
+                        <div class="inline-inputs">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="your@email.com">
+                            </div>
+                            <div class="input-group">
+                                <label>電話 Phone</label>
+                                <input type="tel" name="phone" placeholder="0912-345-678">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">作品集連結<span class="en">Portfolio</span></div>
+                    <div class="form-input">
+                        <input type="url" name="portfolio" placeholder="https://">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Concept -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">💡</span>
+                2. 作品概念 Concept Statement
+            </div>
+            <div class="section-content">
+                <textarea name="concept" rows="6" placeholder="核心理念：這件作品要探討什麼？為什麼用「聲音」作為媒介？與既有作品或理論的對話關係？（約 150-300 字）"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 3: Format -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">🎨</span>
+                3. 作品形式 Format / Medium
+            </div>
+            <div class="section-content">
+                <div class="form-row">
+                    <div class="form-label">類型<span class="en">Type</span></div>
+                    <div class="form-input">
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="type" value="installation">
+                                裝置 Installation
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="type" value="performance">
+                                表演 Performance
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="type" value="site-specific">
+                                場域特定 Site-specific
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="type" value="interactive">
+                                互動 Interactive
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="type" value="soundwalk">
+                                聲音漫步 Soundwalk
+                            </label>
+                            <label class="checkbox-item has-other">
+                                <input type="checkbox" name="type" value="other" id="typeOtherCheck">
+                                其他 Other:
+                                <input type="text" name="type_other" placeholder="請說明">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">時間性<span class="en">Duration</span></div>
+                    <div class="form-input">
+                        <div class="inline-inputs">
+                            <div class="input-group">
+                                <label>持續時間</label>
+                                <input type="text" name="duration" placeholder="例：15 分鐘">
+                            </div>
+                            <div class="input-group">
+                                <label>播放方式</label>
+                                <div class="checkbox-group" style="margin-top: 8px;">
+                                    <label class="checkbox-item">
+                                        <input type="radio" name="playback" value="loop">
+                                        循環 Loop
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="radio" name="playback" value="single">
+                                        單次 Single
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Technical -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">⚙️</span>
+                4. 技術規格 Technical Specifications
+            </div>
+            <div class="section-content">
+                <div class="form-row">
+                    <div class="form-label">聲音來源<span class="en">Sound Source</span></div>
+                    <div class="form-input">
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="source" value="field">
+                                田野錄音 Field Recording
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="source" value="synthesis">
+                                合成 Synthesis
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="source" value="realtime">
+                                即時處理 Real-time
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="source" value="instruments">
+                                樂器 Instruments
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="source" value="voice">
+                                人聲 Voice
+                            </label>
+                            <label class="checkbox-item has-other">
+                                <input type="checkbox" name="source" value="other">
+                                其他:
+                                <input type="text" name="source_other" placeholder="請說明">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">硬體需求<span class="en">Hardware</span></div>
+                    <div class="form-input">
+                        <textarea name="hardware" rows="3" placeholder="喇叭數量與配置、感測器、介面、麥克風等"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">軟體工具<span class="en">Software</span></div>
+                    <div class="form-input">
+                        <input type="text" name="software" placeholder="例：Max/MSP, SuperCollider, Pure Data, Ableton Live...">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label">空間需求<span class="en">Space</span></div>
+                    <div class="form-input">
+                        <div class="inline-inputs">
+                            <div class="input-group">
+                                <label>長 Length (m)</label>
+                                <input type="number" name="space_l" step="0.1" placeholder="0.0">
+                            </div>
+                            <div class="input-group">
+                                <label>寬 Width (m)</label>
+                                <input type="number" name="space_w" step="0.1" placeholder="0.0">
+                            </div>
+                            <div class="input-group">
+                                <label>高 Height (m)</label>
+                                <input type="number" name="space_h" step="0.1" placeholder="0.0">
+                            </div>
+                            <div class="input-group">
+                                <label>電力需求 Power</label>
+                                <input type="text" name="power" placeholder="例：110V / 500W">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Spatial Layout -->
+        <div class="section section-spatial">
+            <div class="section-header">
+                <span class="icon">📐</span>
+                5. 空間配置圖 Spatial Layout
+            </div>
+            <div class="section-content">
+                <p class="hint" style="margin-bottom: 12px;">請在下方區域繪製簡易草圖，標示喇叭位置 🔊、聲音投射方向 →、觀眾動線等（列印後可手繪）</p>
+                <div class="drawing-area">
+                    <div class="placeholder">
+                        <div class="icon">✏️</div>
+                        <div>列印後手繪區域</div>
+                        <div style="font-size: 12px; margin-top: 5px;">Print and draw here</div>
+                    </div>
+                </div>
+                <p class="drawing-hint">圖例建議 Legend: 🔊 喇叭 Speaker | → 聲音方向 Sound direction | ⋯ 觀眾動線 Audience flow | ○ 感測器 Sensor</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Budget -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">💰</span>
+                6. 預算概估 Budget Estimate
+            </div>
+            <div class="section-content">
+                <table class="budget-table">
+                    <thead>
+                        <tr>
+                            <th class="col-item">項目 Item</th>
+                            <th class="col-desc">說明 Description</th>
+                            <th class="col-qty">數量 Qty</th>
+                            <th class="col-amount">金額 Amount</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="budgetBody">
+                        <tr class="budget-row">
+                            <td><input type="text" name="item[]" placeholder="器材租借"></td>
+                            <td><input type="text" name="desc[]" placeholder="說明"></td>
+                            <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+                            <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+                            <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+                        </tr>
+                        <tr class="budget-row">
+                            <td><input type="text" name="item[]" placeholder="項目名稱"></td>
+                            <td><input type="text" name="desc[]" placeholder="說明"></td>
+                            <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+                            <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+                            <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+                        </tr>
+                        <tr class="budget-row">
+                            <td><input type="text" name="item[]" placeholder="項目名稱"></td>
+                            <td><input type="text" name="desc[]" placeholder="說明"></td>
+                            <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+                            <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+                            <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="budget-footer">
+                    <button type="button" class="btn-add" onclick="addBudgetRow()">
+                        <span>＋</span> 新增項目 Add Item
+                    </button>
+                    <div class="total-display">
+                        總計 Total: NT$ <span id="totalAmount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Timeline -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📅</span>
+                7. 時程規劃 Timeline
+            </div>
+            <div class="section-content">
+                <table class="timeline-table">
+                    <thead>
+                        <tr>
+                            <th>階段 Phase</th>
+                            <th>時間 Period</th>
+                            <th>工作內容 Tasks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="phase-cell">研究 Research</td>
+                            <td class="period-cell"><input type="text" name="research_period" placeholder="例：2024/01 - 02"></td>
+                            <td class="tasks-cell"><input type="text" name="research_tasks" placeholder="文獻研究、田野調查..."></td>
+                        </tr>
+                        <tr>
+                            <td class="phase-cell">製作 Production</td>
+                            <td class="period-cell"><input type="text" name="production_period" placeholder="例：2024/03 - 04"></td>
+                            <td class="tasks-cell"><input type="text" name="production_tasks" placeholder="錄音、程式開發、裝置製作..."></td>
+                        </tr>
+                        <tr>
+                            <td class="phase-cell">測試 Testing</td>
+                            <td class="period-cell"><input type="text" name="testing_period" placeholder="例：2024/05"></td>
+                            <td class="tasks-cell"><input type="text" name="testing_tasks" placeholder="系統測試、空間調整..."></td>
+                        </tr>
+                        <tr>
+                            <td class="phase-cell">展出 Exhibition</td>
+                            <td class="period-cell"><input type="text" name="exhibition_period" placeholder="例：2024/06"></td>
+                            <td class="tasks-cell"><input type="text" name="exhibition_tasks" placeholder="佈展、開幕、撤展..."></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 8: References -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📚</span>
+                8. 參考資料 References
+            </div>
+            <div class="section-content">
+                <textarea name="references" rows="4" placeholder="相關藝術家、作品、文獻（請列出至少 3 項）&#10;&#10;例：&#10;1. Max Neuhaus - Times Square (1977)&#10;2. Christina Kubisch - Electrical Walks&#10;3. Brandon LaBelle《Background Noise: Perspectives on Sound Art》"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 9: Appendices -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📎</span>
+                9. 附件清單 Appendices（選用 Optional）
+            </div>
+            <div class="section-content">
+                <div class="appendix-item">
+                    <input type="checkbox" name="has_demo">
+                    <span style="min-width: 140px;">聲音草稿 / Demo：</span>
+                    <input type="url" name="demo_url" placeholder="https://soundcloud.com/... 或 https://drive.google.com/...">
+                </div>
+                <div class="appendix-item">
+                    <input type="checkbox" name="has_visual">
+                    <span style="min-width: 140px;">視覺參考圖像：</span>
+                    <input type="url" name="visual_url" placeholder="https://...">
+                </div>
+                <div class="appendix-item">
+                    <input type="checkbox" name="has_portfolio">
+                    <span style="min-width: 140px;">過往作品連結：</span>
+                    <input type="url" name="past_work_url" placeholder="https://...">
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="actions">
+        <button type="button" class="btn-reset" onclick="resetForm()">清除重填 Reset</button>
+        <button type="button" class="btn-print" onclick="window.print()">
+            <span>🖨️</span> 列印 Print
+        </button>
+    </div>
+</div>
+
+<script>
+    // Add budget row
+    function addBudgetRow() {
+        const tbody = document.getElementById('budgetBody');
+        const newRow = document.createElement('tr');
+        newRow.className = 'budget-row';
+        newRow.innerHTML = `
+            <td><input type="text" name="item[]" placeholder="項目名稱"></td>
+            <td><input type="text" name="desc[]" placeholder="說明"></td>
+            <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+            <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+            <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+        `;
+        tbody.appendChild(newRow);
+        
+        // Focus on the new row's first input
+        newRow.querySelector('input').focus();
+    }
+
+    // Remove budget row
+    function removeRow(btn) {
+        const tbody = document.getElementById('budgetBody');
+        if (tbody.children.length > 1) {
+            btn.closest('tr').remove();
+            calculateTotal();
+        } else {
+            alert('至少需要保留一個項目 / At least one item is required');
+        }
+    }
+
+    // Calculate total
+    function calculateTotal() {
+        const amounts = document.querySelectorAll('input[name="amount[]"]');
+        const qtys = document.querySelectorAll('input[name="qty[]"]');
+        let total = 0;
+        
+        amounts.forEach((input, index) => {
+            const amount = parseFloat(input.value) || 0;
+            const qty = parseFloat(qtys[index].value) || 1;
+            total += amount * qty;
+        });
+        
+        document.getElementById('totalAmount').textContent = total.toLocaleString();
+    }
+
+    // Reset form
+    function resetForm() {
+        if (confirm('確定要清除所有填寫內容嗎？\nAre you sure you want to clear all content?')) {
+            document.getElementById('proposalForm').reset();
+            
+            // Reset budget rows to 3
+            const tbody = document.getElementById('budgetBody');
+            tbody.innerHTML = `
+                <tr class="budget-row">
+                    <td><input type="text" name="item[]" placeholder="器材租借"></td>
+                    <td><input type="text" name="desc[]" placeholder="說明"></td>
+                    <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+                    <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+                    <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+                </tr>
+                <tr class="budget-row">
+                    <td><input type="text" name="item[]" placeholder="項目名稱"></td>
+                    <td><input type="text" name="desc[]" placeholder="說明"></td>
+                    <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+                    <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+                    <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+                </tr>
+                <tr class="budget-row">
+                    <td><input type="text" name="item[]" placeholder="項目名稱"></td>
+                    <td><input type="text" name="desc[]" placeholder="說明"></td>
+                    <td><input type="number" name="qty[]" class="qty-input" value="1" min="1"></td>
+                    <td><input type="number" name="amount[]" class="amount-input" placeholder="0" onchange="calculateTotal()"></td>
+                    <td><button type="button" class="btn-remove" onclick="removeRow(this)">×</button></td>
+                </tr>
+            `;
+            
+            document.getElementById('totalAmount').textContent = '0';
+        }
+    }
+
+    // Auto-calculate on qty change
+    document.addEventListener('change', function(e) {
+        if (e.target.name === 'qty[]') {
+            calculateTotal();
+        }
+    });
+</script>
+
+</body>
+</html>

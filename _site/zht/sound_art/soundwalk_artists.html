@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundwalk 聲音漫步藝術家作品集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .artist-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .artist-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .artist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .artist-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 25px;
+        }
+        
+        .artist-photo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .artist-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .artist-initials {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .artist-info {
+            flex: 1;
+        }
+        
+        .artist-name {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .artist-years {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        
+        .artist-description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .works-section {
+            margin-top: 25px;
+            border-top: 2px solid #f0f0f0;
+            padding-top: 20px;
+        }
+        
+        .works-title {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .work-item {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .work-item:hover {
+            background: #f0f2f5;
+        }
+        
+        .work-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .work-year {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .work-description {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .work-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        
+        .link-button:hover {
+            background: #764ba2;
+        }
+        
+        .link-youtube {
+            background: #FF0000;
+        }
+        
+        .link-youtube:hover {
+            background: #cc0000;
+        }
+        
+        .link-vimeo {
+            background: #1ab7ea;
+        }
+        
+        .link-vimeo:hover {
+            background: #0099cc;
+        }
+        
+        .link-soundcloud {
+            background: #ff5500;
+        }
+        
+        .link-soundcloud:hover {
+            background: #cc4400;
+        }
+        
+        .link-bandcamp {
+            background: #629aa9;
+        }
+        
+        .link-bandcamp:hover {
+            background: #4d7a87;
+        }
+        
+        .link-website {
+            background: #6c757d;
+        }
+        
+        .link-website:hover {
+            background: #545b62;
+        }
+        
+        .link-app {
+            background: #28a745;
+        }
+        
+        .link-app:hover {
+            background: #218838;
+        }
+        
+        .no-media {
+            color: #999;
+            font-style: italic;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+        
+        .icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .artist-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .artist-name {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Soundwalk 聲音漫步藝術家作品集</h1>
+            <p class="subtitle">從 1960 年代至今的聲音漫步藝術發展</p>
+        </header>
+
+        <div class="artist-grid">
+            
+            <!-- Max Neuhaus -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://media.soundoflife.com/articles/354/Sound_of_Life_-_Max_Neuhaus.jpg" alt="Max Neuhaus">
+                        <!-- <span class="artist-initials">MN</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Max Neuhaus</h2>
+                        <p class="artist-years">1939-2009 | 美國</p>
+                        <p class="artist-description">聲音漫步的先驅，前衛打擊樂演奏家轉為聲音藝術家。他開創了將聲音作為雕塑媒介的概念，創造了「聲音裝置」這個術語。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">LISTEN <span class="work-year">(1966-1976)</span></div>
+                        <div class="work-description">聲音漫步的開創性作品。在參與者手上蓋上「LISTEN」印章，帶領他們在城市中步行，重新發現日常環境中的聲音。</div>
+                        <div class="no-media">📝 此為現場體驗作品，無影片記錄</div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Times Square <span class="work-year">(1977-1992, 2002-現在)</span></div>
+                        <div class="work-description">紐約時代廣場地下的永久聲音裝置，從通風格柵發出共鳴的嗡嗡聲，創造了一個隱藏的聲音地標。</div>
+                        <div class="work-links">
+                            <a href="https://www.diaart.org/visit/visit-our-locations-sites/max-neuhaus-times-square" target="_blank" class="link-button link-website">
+                                🌐 Dia Art Foundation
+                            </a>
+                            <a href="https://www.max-neuhaus.estate/" target="_blank" class="link-button link-website">
+                                🏛️ 官方網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Drive-in Music <span class="work-year">(1967)</span></div>
+                        <div class="work-description">要求聽眾開車經過特定路線體驗的作品。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hildegard Westerkamp -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://www.hildegardwesterkamp.ca/bio/files/fullres-104.jpg" alt="Hildegard Westerkamp">
+                        <!-- <span class="artist-initials">HW</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Hildegard Westerkamp</h2>
+                        <p class="artist-years">1946- | 德國/加拿大</p>
+                        <p class="artist-description">聲景作曲家和聲音生態學家，世界聲景計畫成員。她將聲音漫步發展為環境意識和深度聆聽的實踐。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Kits Beach Soundwalk <span class="work-year">(1989)</span></div>
+                        <div class="work-description">溫哥華基斯海灘的聲音漫步作品，探索城市噪音與自然細微聲音（如藤壺進食聲）之間的對比。</div>
+                        <div class="work-links">
+                            <a href="https://empreintesdigitales.bandcamp.com/track/kits-beach-soundwalk" target="_blank" class="link-button link-bandcamp">
+                                🎵 Bandcamp
+                            </a>
+                            <a href="https://soundcloud.com/jcharney-mica/listening-1-westerkamp" target="_blank" class="link-button link-soundcloud">
+                                ☁️ SoundCloud
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Beneath the Forest Floor <span class="work-year">(1992)</span></div>
+                        <div class="work-description">由不列顛哥倫比亞省老齡森林錄音組成，帶領聽眾進入森林的陰影世界和精神空間。</div>
+                        <div class="work-links">
+                            <a href="https://empreintesdigitales.bandcamp.com/track/beneath-the-forest-floor" target="_blank" class="link-button link-bandcamp">
+                                🎵 Bandcamp
+                            </a>
+                            <a href="https://soundcloud.com/ear-room/hildegard-westerkamp" target="_blank" class="link-button link-soundcloud">
+                                ☁️ SoundCloud (片段)
+                            </a>
+                            <a href="https://archive.org/details/hildegard-westerkamp-transformations" target="_blank" class="link-button link-website">
+                                📚 Internet Archive
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">A Walk Through the City <span class="work-year">(1981)</span></div>
+                        <div class="work-description">城市聲景的探索作品。</div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Cricket Voice <span class="work-year">(1987)</span></div>
+                        <div class="work-description">以蟋蟀聲音為主題的作品。</div>
+                        <div class="work-links">
+                            <a href="https://empreintesdigitales.bandcamp.com/album/transformations" target="_blank" class="link-button link-bandcamp">
+                                🎵 Transformations 專輯
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Janet Cardiff -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://cardiffmiller.com/wp-content/uploads/2020/12/portrait_cardiff_miller_2012-1280x1038.jpg" alt="Janet Cardiff & George Bures Miller">
+                        <!-- <span class="artist-initials">JC</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Janet Cardiff & George Bures Miller</h2>
+                        <p class="artist-years">Cardiff: 1957- | Miller: 1960- | 加拿大</p>
+                        <p class="artist-description">以創新的音頻和視訊漫步聞名，創造了「物理電影」的概念，混合現實與虛構，使用雙耳錄音技術創造沉浸式體驗。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">The Missing Voice (Case Study B) <span class="work-year">(1999)</span></div>
+                        <div class="work-description">倫敦東區的50分鐘音頻漫步，結合偵探故事、黑色電影元素和個人敘事，從Whitechapel圖書館開始。</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/watch?v=k20uku4EpXQ" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube
+                            </a>
+                            <a href="https://soundcloud.com/artangel-2/talk-the-missing-voice-01" target="_blank" class="link-button link-soundcloud">
+                                ☁️ SoundCloud
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Alter Bahnhof Video Walk <span class="work-year">(2012)</span></div>
+                        <div class="work-description">在卡塞爾火車站的影音步行作品，結合iPod影像與雙耳錄音，混合現實與虛構，過去與現在。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>雙耳錄音、影片、GPS定位<br>
+                            <strong>互動性：</strong>導覽式 - 觀眾跟隨預設路線體驗
+                        </div>
+                        <div class="work-links">
+                            <a href="https://cardiffmiller.com/walks/alter-bahnhof-video-walk/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://vimeo.com/44079169" target="_blank" class="link-button link-vimeo">
+                                🎬 作品摘錄
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=sJokT8wHFhI" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube紀錄
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Night Walk for Edinburgh <span class="work-year">(2019)</span></div>
+                        <div class="work-description">為愛丁堡創作的夜間視訊漫步。</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/watch?v=s5aVHwdfiEU" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Forest Walk <span class="work-year">(1991)</span></div>
+                        <div class="work-description">Cardiff的第一個聲音漫步作品，成為後續所有作品的原型。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Christina Kubisch -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://www.saarbruecker-zeitung.de/imgs/03/4/8/2/1/7/2/4/7/tok_faa57c46bccb896112c4a1c3d7b3e46f/w1638_h1313_x819_y1133_SZ_48166975_1054018591_RGB_190_1_1_97e07f069447313acbc1eec359958693_1549891351_1054018591_818a6cf4d8-00a7a4017e4b753a.jpg" alt="Christina Kubisch">
+                        <!-- <span class="artist-initials">CK</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Christina Kubisch</h2>
+                        <p class="artist-years">1948- | 德國</p>
+                        <p class="artist-description">聲音藝術先驅，以電磁感應系統創作聞名。她的電子漫步揭示城市中不可見的電磁場聲音。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Electrical Walks <span class="work-year">(2004-現在)</span></div>
+                        <div class="work-description">使用特製耳機探索城市中的電磁場，將ATM、保安系統、霓虹燈等發出的電磁波轉化為聲音。已在全球超過94個城市舉行。</div>
+                        <div class="work-links">
+                            <a href="https://electricalwalks.org/video/" target="_blank" class="link-button link-website">
+                                🎥 官方影片集
+                            </a>
+                            <a href="https://imprec.bandcamp.com/album/five-electrical-walks" target="_blank" class="link-button link-bandcamp">
+                                🎵 Five Electrical Walks
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Electrical Walks Oslo <span class="work-year">(2019)</span></div>
+                        <div class="work-description">探索奧斯陸隱藏的電磁場。</div>
+                        <div class="work-links">
+                            <a href="https://electricalwalks.org/" target="_blank" class="link-button link-website">
+                                🌐 觀看影片 (8:29)
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Virtual Electrical Walks <span class="work-year">(2020)</span></div>
+                        <div class="work-description">奧斯陸和第比利斯的21個互動全景虛擬漫步。</div>
+                        <div class="work-links">
+                            <a href="https://electricalwalks.org/" target="_blank" class="link-button link-website">
+                                🌐 虛擬體驗
+                            </a>
+                        </div>
+                    </div>
+                                       <div class="work-item">
+                        <div class="work-title">Il Respiro Del Mare <span class="work-year">(1981)</span></div>
+                        <div class="work-description">早期的電磁感應裝置，使用感應線圈創造隱形的聲音場域，觀眾配戴特製耳機在空間中移動時聽到不同聲音。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>電磁感應線圈、多聲道系統<br>
+                            <strong>互動性：</strong>場域探索 - 空間位置決定聲音內容
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Cloud <span class="work-year">(2011-2017)</span></div>
+                        <div class="work-description">由數千條紅色電線組成的大型裝置，電線中傳輸著各種聲音訊號，觀眾使用特製耳機聆聽。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>電磁感應、多層次聲音編程<br>
+                            <strong>互動性：</strong>立體探索 - 高度和位置影響聲音
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Viv Corringham -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://www.move.com.au/img/artist/700/847.jpg" alt="Viv Corringham">
+                        <!-- <span class="artist-initials">VC</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Viv Corringham</h2>
+                        <p class="artist-years">活躍於1980年代至今 | 英國/美國</p>
+                        <p class="artist-description">聲音藝術家和歌唱家，探索地方感與個人歷史、記憶的連結。她的Shadow Walks項目已在全球近30個地點進行。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Shadow Walks <span class="work-year">(2003-現在)</span></div>
+                        <div class="work-description">邀請當地人帶領藝術家走他們特殊意義的路線，之後藝術家獨自重走並即興演唱。已在希臘、香港、英國、美國、葡萄牙等地進行約120次。</div>
+                        <div class="work-links">
+                            <a href="https://archive.org/details/radia_s30_n416_RadioPapesse_VivCorringham_ShadowWalkFlorence" target="_blank" class="link-button link-website">
+                                🎧 Shadow Walks Florence
+                            </a>
+                            <a href="http://vivcorringham.org" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Shadow Walks (at home) <span class="work-year">(2020)</span></div>
+                        <div class="work-description">COVID-19疫情期間的改編版本，收集錄音描述並透過想像演唱回應。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ellen Reid -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://images.prismic.io/wellcomecollection/dd226839-8582-4c09-a8d5-1c2b73f0f8bf_Ellen+Reid+SOUNDWALK+by+Erin+Baiano+201023-20.jpg?auto=compress%2Cformat&rect=0%2C303%2C3300%2C1547&w=800&h=375" alt="Ellen Reid">
+                        <!-- <span class="artist-initials">ER</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Ellen Reid</h2>
+                        <p class="artist-years">1983- | 美國</p>
+                        <p class="artist-description">普立茲獎得主作曲家，創作GPS驅動的公共聲音藝術。她的SOUNDWALK讓聽眾透過選擇的路徑創造自己的音樂體驗。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">SOUNDWALK <span class="work-year">(2020-現在)</span></div>
+                        <div class="work-description">GPS驅動的公共藝術APP，在洛杉磯格里菲斯公園、紐約中央公園等地提供隨路徑變化的音樂體驗。與紐約愛樂樂團、Kronos Quartet等合作錄製。</div>
+                        <div class="work-links">
+                            <a href="https://www.ellenreidsoundwalk.com/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://apps.apple.com/us/app/ellen-reid-soundwalk/id1528147837" target="_blank" class="link-button link-app">
+                                📱 iOS App
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=xyz.echoes.ellenreid" target="_blank" class="link-button link-app">
+                                📱 Android App
+                            </a>
+                            <a href="https://www.npr.org/sections/deceptivecadence/2020/10/24/927121609/" target="_blank" class="link-button link-website">
+                                📻 NPR 報導
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill Fontana -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://s.hdnux.com/photos/70/73/65/14925166/3/1200x0.jpg" alt="Bill Fontana">
+                        <!-- <span class="artist-initials">BF</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Bill Fontana</h2>
+                        <p class="artist-years">1947- | 美國</p>
+                        <p class="artist-description">聲音雕塑先驅，使用環境作為活的音樂資訊來源。雖然不是傳統的soundwalk，但他的作品常涉及環境聲音的移動體驗。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Sequoia Trees River Echoes <span class="work-year">(2019)</span></div>
+                        <div class="work-description">放大3000年老紅杉樹的聲音，揭示樹木中河流振動的秘密共鳴。</div>
+                        <div class="work-links">
+                            <a href="https://vimeopro.com/bitforms/bill-fontana/video/675621036" target="_blank" class="link-button link-vimeo">
+                                🎬 Vimeo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Silent Echoes: Notre-Dame <span class="work-year">(2022)</span></div>
+                        <div class="work-description">巴黎聖母院大火後，記錄十座大鐘的共鳴，創造10聲道聲音裝置。</div>
+                        <div class="work-links">
+                            <a href="https://www.resoundings.info/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Spiraling Echoes <span class="work-year">(2009)</span></div>
+                        <div class="work-description">混合舊金山灣區錄製的聲音：紅翅黑鸝、霧號、水下洋流等。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soundwalk Collective -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 將下面的 src="" 替換成圖片路徑或網址 -->
+                        <img src="https://slowness.com/app/uploads/2023/10/F6A1810-1-scaled.jpg" alt="Soundwalk Collective">
+                        <!-- <span class="artist-initials">SC</span> -->
+                    </div>
+                    <div class="artist-info">
+                        <a href="https://soundwalkcollective.com/homepage"><h2 class="artist-name">Soundwalk Collective</h2></a>
+                        <p class="artist-years">2001成立 | Stephan Crasneanscki & Simone Merli</p>
+                        <p class="artist-description">當代聲音藝術平台，開發針對特定場地和語境的聲音項目，與Patti Smith等藝術家長期合作。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">CORRESPONDENCES with Patti Smith <span class="work-year">(2012-現在)</span></div>
+                        <div class="work-description">跨越10多年的持續發展項目，穿越豐富的地理環境，發現詩人、電影製作者、革命者留下的聲音足跡。</div>
+                        <div class="work-links">
+                            <a href="https://soundwalkcollective.bandcamp.com/" target="_blank" class="link-button link-bandcamp">
+                                🎵 Bandcamp
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Perfect Vision Trilogy with Patti Smith <span class="work-year">(2017-2021)</span></div>
+                        <div class="work-description">靈感來自三位法國詩人的作品，分別在墨西哥、衣索比亞和印度錄製。</div>
+                        <div class="work-links">
+                            <a href="https://soundwalkcollective.bandcamp.com/album/the-perfect-vision-reworkings" target="_blank" class="link-button link-bandcamp">
+                                🎵 The Perfect Vision
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他重要藝術家 -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <!-- 可在此加入群組照片或保留 + 符號 -->
+                        <span class="artist-initials">+</span>
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">其他重要聲音漫步藝術家</h2>
+                        <p class="artist-years">1960年代至今</p>
+                        <p class="artist-description">聲音漫步藝術的發展涉及眾多藝術家的貢獻。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">📍 重要作品與藝術家</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Graeme Miller - Linked <span class="work-year">(1999)</span></div>
+                        <div class="work-description">在東倫敦高速公路建設區域設置20個發射器，播放因建設而流離失所居民的口述歷史。</div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Annea Lockwood - Sound Map of the Hudson River <span class="work-year">(1982)</span></div>
+                        <div class="work-description">混合哈德遜河不同區段的現場錄音，包含與河流相關人物的訪談。</div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Pierre Huyghe - A Forest of Lines <span class="work-year">(2008)</span></div>
+                        <div class="work-description">在雪梨歌劇院音樂廳內建造由一千棵真樹組成的臨時森林，創造24小時的沉浸式體驗。</div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">katrinem - Path of Awareness系列 <span class="work-year">(2012-現在)</span></div>
+                        <div class="work-description">在柏林、馬賽、紐約、德黑蘭等城市創作的路徑作品，穿著特製「有聲」鞋子，關注步行聲音與城市材質的互動。</div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">R. Murray Schafer - World Soundscape Project <span class="work-year">(1970-)</span></div>
+                        <div class="work-description">聲景研究的開創性計畫，提出「聲音漫步」概念的理論基礎。</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>📚 資料整理自《Sound Art: Concepts and Practices》、《The Bloomsbury Handbook of Sound Art》、《Sound Art Revisited》等書籍</p>
+            <p>以及藝術家官方網站與相關美術館典藏資料</p>
+            <p style="margin-top: 20px; color: #666;">© 2024 Soundwalk 聲音漫步藝術家作品集</p>
+        </footer>
+    </div>
+</body>
+</html>

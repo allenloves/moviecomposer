@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Art Timeline 聲音藝術時間軸 1913-2013</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #0f3460;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .source {
+            color: #888;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        
+        /* 時代區塊 */
+        .era-section {
+            margin-bottom: 50px;
+        }
+        
+        .era-title {
+            background: linear-gradient(135deg, #e94560, #0f3460);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.3);
+        }
+        
+        .artist-grid {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .artist-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #e94560;
+        }
+        
+        .artist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .artist-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        
+        /* 藝術家照片樣式 */
+        .artist-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 4px solid #e94560;
+            background-color: #f0f0f0;
+        }
+        
+        /* 無照片時的預設頭像 */
+        .artist-photo-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 4px solid #e94560;
+            background: linear-gradient(135deg, #e94560, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        
+        .artist-info {
+            flex: 1;
+        }
+        
+        .artist-name {
+            font-size: 1.5em;
+            color: #0f3460;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .work-title-main {
+            font-style: italic;
+            color: #e94560;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .work-year {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #0f3460);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 8px;
+            font-style: normal;
+        }
+        
+        .location {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        
+        .location::before {
+            content: "📍 ";
+        }
+        
+        .artist-description {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .links-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .links-title {
+            font-size: 1em;
+            color: #0f3460;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .work-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 14px;
+            background: #0f3460;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+        
+        .link-button:hover {
+            background: #e94560;
+            transform: translateY(-2px);
+        }
+        
+        .link-button.video {
+            background: #ff0000;
+        }
+        
+        .link-button.video:hover {
+            background: #cc0000;
+        }
+        
+        .link-button.museum {
+            background: #2d6a4f;
+        }
+        
+        .link-button.museum:hover {
+            background: #40916c;
+        }
+        
+        .link-button.audio {
+            background: #7209b7;
+        }
+        
+        .link-button.audio:hover {
+            background: #9d4edd;
+        }
+        
+        .link-button.live {
+            background: #f72585;
+        }
+        
+        .link-button.live:hover {
+            background: #b5179e;
+        }
+        
+        /* 特別標註 */
+        .note-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #856404;
+        }
+        
+        .note-box strong {
+            color: #664d03;
+        }
+        
+        /* 底部資訊 */
+        .info-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .info-section h2 {
+            color: #0f3460;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e94560;
+        }
+        
+        .info-card h3 {
+            color: #0f3460;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-card li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        .info-card a {
+            color: #e94560;
+            text-decoration: none;
+        }
+        
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 40px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .artist-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .artist-photo, .artist-photo-placeholder {
+                margin-bottom: 15px;
+            }
+            
+            .era-title {
+                font-size: 1.2em;
+                padding: 12px 20px;
+            }
+            
+            .work-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔊 Sound Art Timeline 聲音藝術時間軸</h1>
+            <p class="subtitle">1913-2013 重要作品年表</p>
+            <p class="source">資料來源：Thom Holmes《Sound Art: Concepts and Practices》Chapter 1, Figure 1.3</p>
+        </header>
+
+        <!-- 早期先驅 1913-1920 -->
+        <div class="era-section">
+            <div class="era-title">🎭 早期先驅 Early Pioneers (1913-1920)</div>
+            <div class="artist-grid">
+
+                <!-- 1913 Duchamp Erratum Musical -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.newexhibitions.com/uploads/f/4/large/614331d1af29d.png" alt="Marcel Duchamp" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Marcel Duchamp</h2>
+                            <div class="work-title-main">La Mariée mise à nu par ses célibataires, même: erratum musical <span class="work-year">1913</span></div>
+                            <p class="location">Rouen, France</p>
+                            <p class="artist-description">Duchamp 以機遇程序 (chance procedure) 創作的音樂作品，從帽子中隨機抽取音符決定旋律。此作品預示了 John Cage 等後來藝術家的機遇音樂概念。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=duchamp+erratum+musical" target="_blank" class="link-button video">🎬 YouTube 搜尋</a>
+                            <a href="https://www.toutfait.com/" target="_blank" class="link-button museum">📚 Toutfait Journal</a>
+                            <a href="https://www.moma.org/artists/1634" target="_blank" class="link-button museum">🏛️ MoMA</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1914 Futurist Concert -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://media.mart.tn.it/media/nzrd0a23/mart-rovereto-fondo-luigi-russolo.jpg" alt="Luigi Russolo" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Marinetti & Luigi Russolo</h2>
+                            <div class="work-title-main">First Futurist Concert / Intonarumori <span class="work-year">1914</span></div>
+                            <p class="location">Rome & Milan, Italy</p>
+                            <p class="artist-description">Russolo 發明的「噪音機器」(Intonarumori) 在未來主義音樂會上首演，宣告工業噪音進入藝術領域。1914年4月21日米蘭首演引發觀眾騷亂。原始錄音僅存 1921 年 Antonio Russolo 錄製版本。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=russolo+intonarumori+reconstruction" target="_blank" class="link-button video">🎬 重建演出</a>
+                            <a href="http://www.medienkunstnetz.de/works/intonarumori/" target="_blank" class="link-button museum">📚 Media Art Net</a>
+                            <a href="https://performa-arts.org/" target="_blank" class="link-button">🎭 Performa 09</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1916 Duchamp With Hidden Noise -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.newexhibitions.com/uploads/f/4/large/614331d1af29d.png" alt="Marcel Duchamp" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Marcel Duchamp</h2>
+                            <div class="work-title-main">With Hidden Noise (À bruit secret) <span class="work-year">1916</span></div>
+                            <p class="location">New York, USA</p>
+                            <p class="artist-description">「輔助現成物」(assisted readymade)：兩片銅板間夾著一團麻繩，內含 Walter Arensberg 秘密放入的神秘物體。搖晃時會發出聲響，至今無人知道內部是什麼。早期動態雕塑與聲音藝術的先驅。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://philamuseum.org/collection/object/51541" target="_blank" class="link-button museum">🏛️ Philadelphia Museum</a>
+                            <a href="https://www.duchamparchives.org/pma/object/51541/" target="_blank" class="link-button museum">📚 Duchamp Portal</a>
+                            <a href="https://www.wikiart.org/en/marcel-duchamp/with-hidden-noise-1916" target="_blank" class="link-button">🖼️ WikiArt</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1916 Hugo Ball -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.omnesmag.com/wp-content/uploads/2024/05/CULTURA.jpg" alt="Hugo Ball at Cabaret Voltaire" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Hugo Ball</h2>
+                            <div class="work-title-main">Cabaret Voltaire / Karawane <span class="work-year">1916</span></div>
+                            <p class="location">Zurich, Switzerland</p>
+                            <p class="artist-description">達達運動發源地 Cabaret Voltaire 的聲音詩表演。Ball 穿著紙板製成的「主教服裝」朗誦無意義音節詩《Karawane》，開創聲音詩 (sound poetry) 傳統。「jolifanto bambla o falli bambla...」</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=hugo+ball+karawane+dada" target="_blank" class="link-button video">🎬 Karawane 重演</a>
+                            <a href="https://digital.kunsthaus.ch/dadaismus/en/dada-on-paper/cabaret-voltaire-hugo-ball" target="_blank" class="link-button museum">📚 Kunsthaus Zürich</a>
+                            <a href="https://smarthistory.org/dada-performance/" target="_blank" class="link-button">📖 Smarthistory</a>
+                            <a href="https://www.theartstory.org/artist/ball-hugo/" target="_blank" class="link-button">🎨 TheArtStory</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 戰後實驗 1942-1960 -->
+        <div class="era-section">
+            <div class="era-title">🔬 戰後實驗 Post-War Experiments (1942-1960)</div>
+            <div class="artist-grid">
+
+                <!-- 1942-47 Kiesler -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://media.gettyimages.com/id/723631331/photo/austrian-american-architect-designer-artist-and-sculptor-frederick-kiesler-new-york-state.jpg?s=612x612&w=gi&k=20&c=72gxOo-XFn0zMd_rAuKZyVPt3Fc3GWYSNmcJPb4gwPg=" alt="Frederick Kiesler" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Frederick Kiesler</h2>
+                            <div class="work-title-main">Art of This Century Surrealist Gallery <span class="work-year">1942-47</span></div>
+                            <p class="location">New York, USA</p>
+                            <p class="artist-description">為 Peggy Guggenheim 設計的革命性畫廊空間。彎曲牆面、浮動畫框、閃爍燈光與聲音裝置創造多感官體驗。孕育了 Jackson Pollock 等抽象表現主義藝術家。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.guggenheim-venice.it/en/art/in-depth/peggy-guggenheim/art-of-this-century/" target="_blank" class="link-button museum">🏛️ Peggy Guggenheim</a>
+                            <a href="https://www.guggenheim.org/publication/peggy-guggenheim-frederick-kiesler-the-story-of-art-of-this-century" target="_blank" class="link-button museum">📚 Guggenheim</a>
+                            <a href="https://www.theartstory.org/venue/gallery-art-of-this-century/" target="_blank" class="link-button">🎨 TheArtStory</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1948 Schaeffer -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://i.scdn.co/image/d2edc03c5eadd9d118cf3db033b970475b37e8bf" alt="Pierre Schaeffer" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Pierre Schaeffer</h2>
+                            <div class="work-title-main">Études de bruits <span class="work-year">1948</span></div>
+                            <p class="location">Paris, France</p>
+                            <p class="artist-description">「具象音樂」(musique concrète) 的誕生。使用火車、旋轉玩具、鋼琴等錄音素材，透過循環溝槽唱片 (locked groove) 技術創作。1948年10月5日首次以「噪音音樂會」(Concert de Bruits) 廣播。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.dailymotion.com/video/x2m7r9" target="_blank" class="link-button video">🎬 Dailymotion</a>
+                            <a href="https://open.spotify.com/search/schaeffer%20etude%20bruit" target="_blank" class="link-button audio">🎵 Spotify</a>
+                            <a href="https://thevinylfactory.com/" target="_blank" class="link-button">📰 Vinyl Factory</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1952 Cage -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://pas.org/wp-content/uploads/2024/02/John-Cage-1.jpg" alt="John Cage" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">John Cage</h2>
+                            <div class="work-title-main">4'33" <span class="work-year">1952</span></div>
+                            <p class="location">Woodstock, NY, USA</p>
+                            <p class="artist-description">史上最著名的「沉默」作品。1952年8月29日由 David Tudor 於 Maverick Concert Hall 首演。三個樂章（30"、2'23"、1'40"）中演奏者不演奏任何音符，讓環境聲音成為音樂本身。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/watch?v=JTEFKFiXSx4" target="_blank" class="link-button video">🎬 William Marx 演出</a>
+                            <a href="https://www.youtube.com/results?search_query=john+cage+4+33+nam+june+paik" target="_blank" class="link-button video">🎬 Nam June Paik 拍攝</a>
+                            <a href="https://www.moma.org/collection/works/163618" target="_blank" class="link-button museum">🏛️ MoMA</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1955 Baschet -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="http://www.mediateletipos.net/wp-content/images/2006/12/baschetbros1.jpg" alt="John Cage" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Baschet Brothers & Lasry</h2>
+                            <div class="work-title-main">Lasry-Baschet Sound Structures <span class="work-year">1955</span></div>
+                            <p class="location">Paris, France</p>
+                            <p class="artist-description">聲音雕塑先驅。François（雕塑家）與 Bernard（工程師）Baschet 兄弟與音樂家 Jacques & Yvonne Lasry 合作，創造「非電子樂器」(instruments non-électroniques)。Cristal Baschet 以濕手指觸摸玻璃棒發聲。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=cristal+baschet" target="_blank" class="link-button video">🎬 Cristal Baschet</a>
+                            <a href="https://baschet.org/site/index.php/the-baschet-story/" target="_blank" class="link-button">🌐 baschet.org</a>
+                            <a href="https://www.discogs.com/lists/Recordings-with-Baschet-Sound-Sculptures/29278" target="_blank" class="link-button audio">💿 Discogs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1958 Varèse -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://media.gettyimages.com/id/515182454/fr/photo/portrait-of-french-american-composer-edgar-varese-as-a-young-man-a-pioneer-of-electronic-music.jpg?s=1024x1024&w=gi&k=20&c=MxeKxlY_EBKmTorgrmavEYcovU4UXJcSCj8Wn6p4pwY=" alt="Edgard Varèse" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Edgard Varèse</h2>
+                            <div class="work-title-main">Poème électronique <span class="work-year">1958</span></div>
+                            <p class="location">Brussels, Belgium</p>
+                            <p class="artist-description">為 1958 年布魯塞爾世界博覽會 Philips Pavilion 創作。8分鐘電子音樂透過 350-425 個揚聲器進行空間化播放。建築由 Le Corbusier 設計，Iannis Xenakis 負責結構。2005年入選美國國家錄音登記。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=varese+poeme+electronique+philips" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="http://www.medienkunstnetz.de/works/poeme-electronique/" target="_blank" class="link-button museum">📚 Media Art Net</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1960 Tinguely -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://cdn.unitycms.io/images/3ZdMczVS4Jg9k_gj6uRp-5.jpg" alt="Jean Tinguely" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Jean Tinguely</h2>
+                            <div class="work-title-main">Homage to New York <span class="work-year">1960</span></div>
+                            <p class="location">New York, USA (MoMA)</p>
+                            <p class="artist-description">1960年3月17日在 MoMA 雕塑花園進行的自毀機器表演。23英尺長、27英尺高的裝置由腳踏車輪、樂器零件、馬達等組成。27分鐘的混亂演出中包含爆破、彩色煙霧，最終失控起火，消防隊介入。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://vimeo.com/search?q=tinguely+homage+new+york" target="_blank" class="link-button video">🎬 Vimeo</a>
+                            <a href="https://www.youtube.com/results?search_query=tinguely+homage+new+york+moma" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="https://www.moma.org/collection/works/81174" target="_blank" class="link-button museum">🏛️ MoMA</a>
+                            <a href="https://smarthistory.org/jean-tinguely-homage-to-new-york/" target="_blank" class="link-button">📖 Smarthistory</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Fluxus 與概念藝術 1962-1970 -->
+        <div class="era-section">
+            <div class="era-title">⚡ Fluxus 與概念藝術 (1962-1970)</div>
+            <div class="artist-grid">
+
+                <!-- 1962 Piano Activities -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://emfinstitute.org/wp-content/uploads/2023/01/PhilipCorner-1000x667-1.png" alt="Philip Corner" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Philip Corner & Fluxus</h2>
+                            <div class="work-title-main">Piano Activities <span class="work-year">1962</span></div>
+                            <p class="location">Wiesbaden, Germany</p>
+                            <p class="artist-description">Fluxus 運動最具爭議的表演。1962年9月1日，George Maciunas、Nam June Paik、Dick Higgins 等人使用槌子、鋸子徒手拆解一架鋼琴，最後將零件拍賣給觀眾。Corner 本人並不在場，對破壞程度感到震驚。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=fluxus+piano+activities+1962" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="https://www.moma.org/collection/works/127344" target="_blank" class="link-button museum">🏛️ MoMA</a>
+                            <a href="https://www.fondazionebonotto.org/en/collection/fluxus/cornerphilip/535.html" target="_blank" class="link-button museum">📚 Fondazione Bonotto</a>
+                            <a href="http://www.medienkunstnetz.de/works/piano-activities/" target="_blank" class="link-button">📚 Media Art Net</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1962 Ligeti -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://d3fr1q02b1tb0i.cloudfront.net/wp-content/uploads/2017/06/12065947/Gyorgy_Ligeti.jpg" alt="György Ligeti" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">György Ligeti</h2>
+                            <div class="work-title-main">Poème Symphonique for 100 metronomes <span class="work-year">1962</span></div>
+                            <p class="location">Hilversum, Netherlands</p>
+                            <p class="artist-description">100 個節拍器同時啟動，由 10 位演奏者各負責 10 個。1963年9月13日首演引發爭議，荷蘭電視台取消原定播出。作品長度取決於最後一個節拍器停止的時間。2020年 Gaudeamus 透過 Zoom 進行全球分散式演出。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=ligeti+poeme+symphonique+100+metronomes" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="https://www.openculture.com/" target="_blank" class="link-button">📖 Open Culture</a>
+                            <a href="https://gaudeamus.nl/" target="_blank" class="link-button">🎭 Gaudeamus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1963 Yoko Ono -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://img.novydenik.com/wp-static/2024/03/Yoko-Ono-with-Glass-Hammer-e1710251914342.jpg" alt="Yoko Ono" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Yoko Ono</h2>
+                            <div class="work-title-main">Earth Piece <span class="work-year">1963</span></div>
+                            <p class="location">New York, USA</p>
+                            <p class="artist-description">指令作品 (instruction piece)：「Listen to the sound of the earth turning.」(聆聽地球轉動的聲音)。收錄於 Ono 的藝術書《Grapefruit》(1964)，被視為概念藝術的基石之一。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://artsandculture.google.com/asset/earth-piece-listen-to-the-sound-of-the-earth-turning-yoko-ono/0gGjFv9n_JYAzg" target="_blank" class="link-button museum">🏛️ Google Arts</a>
+                            <a href="https://www.dazeddigital.com/art-photography/article/61924/1/oh-yoko-ono-music-of-the-mind-lessons-life-art" target="_blank" class="link-button">📰 Dazed</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1966 Beuys -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.artchive.com/wp-content/uploads/2023/04/Joseph-Beuys.jpg" alt="Joseph Beuys" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Joseph Beuys</h2>
+                            <div class="work-title-main">Infiltration Homogen for Piano <span class="work-year">1966</span></div>
+                            <p class="location">Berlin / Düsseldorf, Germany</p>
+                            <p class="artist-description">整架鋼琴被毛氈完全包覆，側面縫有紅十字標誌。Beuys：「聲音被困在毛氈皮膚裡。」這是對沙利竇邁 (thalidomide) 藥害事件受害兒童無法表達自我的隱喻。現藏於龐畢度中心。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.centrepompidou.fr/" target="_blank" class="link-button museum">🏛️ Centre Pompidou</a>
+                            <a href="https://en.wikipedia.org/wiki/Joseph_Beuys" target="_blank" class="link-button">📖 Wikipedia</a>
+                            <a href="https://thesketchline.com/en/pictures/infiltration-homogen-for-piano-2/" target="_blank" class="link-button">🎨 SKETCHLINE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1967 Amacher -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.soundohm.com/data/artists/010/maryanne-amacher-1.png" alt="Maryanne Amacher" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Maryanne Amacher</h2>
+                            <div class="work-title-main">City Links <span class="work-year">1967</span></div>
+                            <p class="location">Buffalo, NY, USA</p>
+                            <p class="artist-description">遠距音樂 (telematic music) 先驅。透過高品質電話線將城市 8 個地點的即時聲音傳輸至 WBFO 電台，進行 28 小時現場混音廣播。此系列延續至 1980 年，共 22 次迭代。獲俄亥俄州廣播教育獎。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://blankforms.org/" target="_blank" class="link-button audio">🎧 Blank Forms</a>
+                            <a href="https://monoskop.org/Maryanne_Amacher" target="_blank" class="link-button museum">📚 Monoskop</a>
+                            <a href="https://archives.nypl.org/mus/185461" target="_blank" class="link-button museum">📚 NYPL Archives</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1969 Lucier -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://selector.news/wp-content/uploads/2021/12/Webp.net-resizeimage-14.jpg" alt="Alvin Lucier" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Alvin Lucier</h2>
+                            <div class="work-title-main">I Am Sitting in a Room <span class="work-year">1969</span></div>
+                            <p class="location">Waltham, MA, USA</p>
+                            <p class="artist-description">Lucier 朗讀文本，錄音後播放並再次錄製，反覆進行直到語音被房間共鳴頻率取代。約 45 分鐘的過程揭示空間的聲學特性。1970年 Guggenheim 首演，1981年 Lovely Music 發行經典版本。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=alvin+lucier+i+am+sitting+in+a+room+full" target="_blank" class="link-button video">🎬 完整版本</a>
+                            <a href="https://www.youtube.com/watch?v=icruGcSsPp0" target="_blank" class="link-button video">🎬 VIDEO ROOM 1000</a>
+                            <a href="https://www.lovelymusic.com/" target="_blank" class="link-button audio">💿 Lovely Music</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1970 Dream House -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://theincubator.live/wp-content/uploads/2016/12/c8m906mr-fileid-1-53-43.jpg" alt="La Monte Young" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">La Monte Young & Marian Zazeela</h2>
+                            <div class="work-title-main">Dream House <span class="work-year">1970</span></div>
+                            <p class="location">New York, USA</p>
+                            <p class="artist-description">持續電子聲音環境，使用純律 (just intonation) 正弦波與 Zazeela 的洋紅色燈光設計。概念始於 1962 年，1993 年起於 Tribeca 275 Church Street 常設展出。每週三至六開放，門票 $10。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=la+monte+young+dream+house" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="http://www.melafoundation.org/" target="_blank" class="link-button live">🏠 MELA Foundation</a>
+                            <a href="https://www.diaart.org/" target="_blank" class="link-button museum">🏛️ Dia Art Foundation</a>
+                        </div>
+                        <div class="note-box">
+                            <strong>📍 可親身體驗：</strong>275 Church Street, NYC，每週三至六 14:00-00:00，門票 $10
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 聲音裝置的成熟 1973-1990 -->
+        <div class="era-section">
+            <div class="era-title">🎛️ 聲音裝置的成熟 (1973-1990)</div>
+            <div class="artist-grid">
+
+                <!-- 1973 Tudor -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.getty.edu/research/exhibitions_events/events/david_tudor_symposium/images/thumbnails/grl_38_th.jpg" alt="David Tudor" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">David Tudor</h2>
+                            <div class="work-title-main">Rainforest IV <span class="work-year">1973</span></div>
+                            <p class="location">Chocorua, NH, USA</p>
+                            <p class="artist-description">使用電磁換能器 (transducers) 驅動懸掛物體產生共鳴的聲音裝置。物體本身成為揚聲器。Composers Inside Electronics (CIE) 持續演出。2009年創建自動運行版本 Rainforest V，現藏於 MoMA。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.getty.edu/research/" target="_blank" class="link-button video">🎬 Getty Research</a>
+                            <a href="https://davidtudor.org/" target="_blank" class="link-button">🌐 davidtudor.org</a>
+                            <a href="https://www.moderecords.com/" target="_blank" class="link-button audio">💿 Mode Records</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1974 Liz Phillips -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://alchetron.com/cdn/liz-phillips-1328dfd4-d8c2-4ca3-b1f2-f751b665965-resize-750.jpeg" alt="Liz Phillips" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Liz Phillips</h2>
+                            <div class="work-title-main">Sum Time <span class="work-year">1974</span></div>
+                            <p class="location">Syracuse, NY, USA</p>
+                            <p class="artist-description">與 Yoshi Wada 合作，使用射頻場 (RF fields) 創造互動聲音裝置。觀眾移動時觸發揚聲器之間的駐波。Phillips 是互動聲音雕塑先驅，作品展於 Whitney、SFMOMA 等美術館。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://en.wikipedia.org/wiki/Liz_Phillips" target="_blank" class="link-button">📖 Wikipedia</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1977 Neuhaus -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://cdn.shopify.com/s/files/1/0002/9091/4356/articles/Sound_of_Life_-_Max_Neuhaus.jpg" alt="Max Neuhaus" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Max Neuhaus</h2>
+                            <div class="work-title-main">Times Square <span class="work-year">1977</span></div>
+                            <p class="location">New York, USA</p>
+                            <p class="artist-description">位於 Broadway 與 45-46 街之間行人島的永久聲音裝置。聲音從地鐵通風井透過街道格柵傳出，「類似大鐘餘音的豐富諧波紋理」。1977-1992 首次裝置，2002年 Dia Art Foundation 重新啟動並永久維護。刻意不標示為藝術作品。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=max+neuhaus+times+square" target="_blank" class="link-button video">🎬 50周年紀念</a>
+                            <a href="https://www.diaart.org/collection/collection/neuhaus-max-times-square-1977" target="_blank" class="link-button museum">🏛️ Dia Art Foundation</a>
+                            <a href="https://www.atlasobscura.com/" target="_blank" class="link-button">🗺️ Atlas Obscura</a>
+                        </div>
+                        <div class="note-box">
+                            <strong>📍 可親身體驗：</strong>Broadway & 45-46 Street 行人島，24/7 運作
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1980 Julius -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.echigo-tsumari.jp/assets/uploads/2020/02/Rolf-Julius_720.jpg" alt="Rolf Julius" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Rolf Julius</h2>
+                            <div class="work-title-main">Music for a Frozen Lake <span class="work-year">1980</span></div>
+                            <p class="location">Berlin, Germany</p>
+                            <p class="artist-description">「小聲音」(small sounds) 美學的代表作。數個揚聲器在結冰湖面上播放為湖而作的音樂。Julius：「我希望湖本身成為音樂。」後來發展出將小揚聲器放在石頭或灰燼下的創作方式。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="http://www.medienkunstnetz.de/works/konzert-fur-einen-gefrorenen-see/" target="_blank" class="link-button museum">📚 Media Art Net</a>
+                            <a href="https://aestheticamagazine.com/the-art-of-sound/" target="_blank" class="link-button">📰 Aesthetica</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1980-81 Hiller -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://hips.hearstapps.com/hmg-prod/images/susanhillerbanner-1548843857.jpg" alt="Susan Hiller" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Susan Hiller</h2>
+                            <div class="work-title-main">Monument <span class="work-year">1980-81</span></div>
+                            <p class="location">London, UK</p>
+                            <p class="artist-description">41 張倫敦 Postman's Park 紀念牌匾照片（每張代表藝術家生命的一年），配合 20 分鐘錄音。觀眾坐在長椅上，背對照片牆，透過耳機聆聽 Hiller 對英雄主義、死亡、記憶與再現的意識流敘述。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.tate.org.uk/art/artworks/hiller-monument-t06902" target="_blank" class="link-button museum">🏛️ Tate</a>
+                            <a href="http://www.susanhiller.org/installations/monument.html" target="_blank" class="link-button">🌐 susanhiller.org</a>
+                            <a href="https://www.lissongallery.com/" target="_blank" class="link-button museum">🏛️ Lisson Gallery</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1981 Kubisch -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.saarbruecker-zeitung.de/imgs/03/4/8/2/1/7/2/4/7/tok_faa57c46bccb896112c4a1c3d7b3e46f/w1638_h1313_x819_y1133_SZ_48166975_1054018591_RGB_190_1_1_97e07f069447313acbc1eec359958693_1549891351_1054018591_818a6cf4d8-00a7a4017e4b753a.jpg" alt="Christina Kubisch" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Christina Kubisch</h2>
+                            <div class="work-title-main">Il Respiro Del Mare (海的呼吸) <span class="work-year">1981</span></div>
+                            <p class="location">Milan, Italy</p>
+                            <p class="artist-description">首件使用電磁感應原理的公共聲音裝置。紅色和藍色電線迷宮既是視覺元素也是聲音來源，觀眾使用特製耳機接收電磁感應聲音。開啟 Kubisch 後續「Electrical Walks」系列。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="http://www.christinakubisch.de/" target="_blank" class="link-button">🌐 christinakubisch.de</a>
+                            <a href="https://flash---art.com/" target="_blank" class="link-button">📰 Flash Art</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1990 Horn -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://www.textezurkunst.de/media/upload/9c0a1eea-f71c-4d9c-8576-9338523a155c-tzk_136_karpowski_lissoni_1_t_w1280.jpg" alt="Rebecca Horn" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Rebecca Horn</h2>
+                            <div class="work-title-main">Concert for Anarchy <span class="work-year">1990</span></div>
+                            <p class="location">London, UK</p>
+                            <p class="artist-description">倒掛的三角鋼琴，鍵盤和內部結構不定時爆發性地突出又收回，發出巨大噪音後恢復平靜。原為電影《Buster's Bedroom》道具。Horn：「從精神病院解放後，它現在創作自己的音樂。」現藏於 Tate。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=rebecca+horn+concert+anarchy+tate" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="https://www.tate.org.uk/art/artworks/horn-concert-for-anarchy-t07517" target="_blank" class="link-button museum">🏛️ Tate</a>
+                            <a href="https://www.wikiart.org/en/rebecca-horn/concert-for-anarchy-1990" target="_blank" class="link-button">🖼️ WikiArt</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 當代聲音藝術 1994-2013 -->
+        <div class="era-section">
+            <div class="era-title">🌐 當代聲音藝術 Contemporary Sound Art (1994-2013)</div>
+            <div class="artist-grid">
+
+                <!-- 1994 Fontana -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://s.hdnux.com/photos/70/73/65/14925166/3/1200x0.jpg" alt="Bill Fontana" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Bill Fontana</h2>
+                            <div class="work-title-main">Sound Island <span class="work-year">1994</span></div>
+                            <p class="location">Paris, France</p>
+                            <p class="artist-description">為諾曼第登陸 50 周年創作。從 Normandy 海岸即時傳輸海浪聲音至凱旋門外牆揚聲器，觀景台則播放巴黎 16 個地點的即時聲音。海浪白噪音遮蔽交通噪音，創造「聲音島嶼」錯覺。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=bill+fontana+sound+island+paris" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="http://resoundings.info/" target="_blank" class="link-button">🌐 resoundings.info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1997 Macchi -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://img2.rtve.es/v/686373?w=800&preview=1265384589042.jpg" alt="Jorge Macchi" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Jorge Macchi</h2>
+                            <div class="work-title-main">Música incidental <span class="work-year">1997</span></div>
+                            <p class="location">Buenos Aires, Argentina</p>
+                            <p class="artist-description">三頁看似空白的樂譜掛在牆上，五線譜的線條實為報紙新聞文字，行距決定鋼琴旋律的音符。觀眾戴耳機聆聽音樂，視覺與聽覺的錯置創造詩意體驗。現藏於 Tate。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.tate.org.uk/art/artworks/macchi-incidental-music-t11945" target="_blank" class="link-button museum">🏛️ Tate</a>
+                            <a href="https://www.jorgemacchi.com/en/exhibitions/23/musica-incidental" target="_blank" class="link-button">🌐 jorgemacchi.com</a>
+                            <a href="https://ruthbenzacar.com/en/artists/jorge-macchi/" target="_blank" class="link-button museum">🏛️ Ruth Benzacar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1998 Hamilton -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://news.artnet.com/app/news-upload/2020/12/hamilton-thread-still-081.jpg" alt="Ann Hamilton" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Ann Hamilton</h2>
+                            <div class="work-title-main">Mantle <span class="work-year">1998</span></div>
+                            <p class="location">Miami, USA</p>
+                            <p class="artist-description">3,500 平方英尺的場域特定裝置。48 英尺長的鋼桌上堆滿 60,000 朵花，花中埋藏 30 個揚聲器發出模糊人聲與機械聲。13 台短波收音機高掛架上，一位助手在窗邊縫合羊毛大衣。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.si.edu/object/siris_sil_937994" target="_blank" class="link-button museum">🏛️ Smithsonian</a>
+                            <a href="https://www.annhamiltonstudio.com/" target="_blank" class="link-button">🌐 Ann Hamilton Studio</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1998 DeMarinis -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://pauldemarinis.org/images/image2.jpeg" alt="Paul DeMarinis" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Paul DeMarinis</h2>
+                            <div class="work-title-main">Raindance <span class="work-year">1998</span></div>
+                            <p class="location">Lisbon, Portugal (Expo '98)</p>
+                            <p class="artist-description">水流經特製調變噴嘴，將音頻振動轉換為水滴模式。觀眾用雨傘接住水流時，傘面成為揚聲器，播放音樂、噪音、人聲和節奏。2006年獲 Ars Electronica 互動藝術金尼卡獎。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://vimeo.com/46478823" target="_blank" class="link-button video">🎬 Vimeo</a>
+                            <a href="https://pauldemarinis.org/RainDance.html" target="_blank" class="link-button">🌐 pauldemarinis.org</a>
+                            <a href="https://digitalartarchive.at/database/general/work/raindance.html" target="_blank" class="link-button museum">📚 ADA Archive</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1999 Finer -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://dl6pgk4f88hky.cloudfront.net/2021/06/2015_42_jem_finer_larger-566x768.jpg" alt="Jem Finer" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Jem Finer</h2>
+                            <div class="work-title-main">Longplayer <span class="work-year">1999</span></div>
+                            <p class="location">London, UK</p>
+                            <p class="artist-description">設計為演奏 1000 年的音樂作品，1999年12月31日開始，預計於 2999年12月31日結束。使用西藏頌缽錄音，透過演算法不斷重組。可於線上即時收聽，實體「聆聽站」位於倫敦燈塔。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://longplayer.org/" target="_blank" class="link-button live">🎧 即時收聽</a>
+                        </div>
+                        <div class="note-box">
+                            <strong>📍 可親身體驗：</strong>Trinity Buoy Wharf, London - 聆聽站開放參觀
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2000 Friz -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://alchetron.com/cdn/anna-friz-0eb29ca0-19ce-405f-8c8f-af2fea12286-resize-750.jpeg" alt="Anna Friz" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Anna Friz</h2>
+                            <div class="work-title-main">The Clandestine Transmissions of Pirate Jenny <span class="work-year">2000</span></div>
+                            <p class="location">Winnipeg, Canada</p>
+                            <p class="artist-description">廣播藝術作品，透過低功率 FM 發射器創造秘密廣播網絡。Friz 是實驗廣播和聲音藝術領域的重要藝術家，作品探索電磁空間與聲音的關係。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="http://annafriz.net/" target="_blank" class="link-button">🌐 annafriz.net</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2005 Byrne -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://static.independent.co.uk/2023/01/12/14/Theater-David_Byrne_51196.jpg" alt="David Byrne" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">David Byrne</h2>
+                            <div class="work-title-main">Playing the Building <span class="work-year">2005</span></div>
+                            <p class="location">Stockholm, Sweden</p>
+                            <p class="artist-description">古董風琴連接整棟建築的金屬樑柱、管線和結構。按下琴鍵時，電纜傳送訊號使建築元素振動、敲擊或吹氣發聲，建築本身成為巨大樂器。任何人都可以彈奏。2008年於紐約 Battery Maritime Building 展出。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=david+byrne+playing+the+building" target="_blank" class="link-button video">🎬 YouTube</a>
+                            <a href="https://www.davidbyrne.com/explore/playing-the-building" target="_blank" class="link-button">🌐 davidbyrne.com</a>
+                            <a href="https://creativetime.org/programs/archive/2008/byrne/" target="_blank" class="link-button museum">🏛️ Creative Time</a>
+                            <a href="https://www.npr.org/2008/06/04/91106423/david-byrne-plays-the-building" target="_blank" class="link-button audio">📻 NPR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2008 DAMAGE -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://images.squarespace-cdn.com/content/v1/527945dce4b061ca915e1928/1587056503212-M0BRJNWNTPT9BGOSOCWY/93324768_184754679150742_8192334707606683648_n.jpg" alt="Misha Mross & David Brown" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Misha Mross & David Brown</h2>
+                            <div class="work-title-main">D.A.M.A.G.E <span class="work-year">2008</span></div>
+                            <p class="location">Ithaca, NY, USA</p>
+                            <p class="artist-description">這個作品運用了軟體與即時混音，藝術家們將軟體融入到沙灘球中。沙灘球配備了加速計，這使得它能夠對在觀眾周圍拋擲做出反應。該作品通過讓參觀者參與而超越了正常的音樂會形式。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/watch?v=m0kiBPakDsA" target="_blank" class="link-button video">🎬 YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2010 Philipsz -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://static.a-n.co.uk/wp-content/uploads/2015/11/IMG_8818-570x839.jpg" alt="Susan Philipsz" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Susan Philipsz</h2>
+                            <div class="work-title-main">Lowlands <span class="work-year">2010</span></div>
+                            <p class="location">Glasgow → London, UK</p>
+                            <p class="artist-description">首位以聲音裝置獲得 Turner Prize 的藝術家。在 Glasgow 三座橋下（George V、Caledonian Railway、Glasgow Bridge）播放 16 世紀蘇格蘭哀歌「Lowlands Away」的三個無伴奏演唱版本。獎金 £25,000。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/results?search_query=susan+philipsz+lowlands+turner+prize" target="_blank" class="link-button video">🎬 Turner Prize</a>
+                            <a href="https://www.tate.org.uk/" target="_blank" class="link-button museum">🏛️ Tate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2012 Nicolai -->
+                <div class="artist-card">
+                    <div class="artist-header">
+                        <img src="https://uploads7.wikiart.org/images/carsten-nicolai.jpg!Portrait.jpg" alt="Carsten Nicolai" class="artist-photo">
+                        <div class="artist-info">
+                            <h2 class="artist-name">Carsten Nicolai (Alva Noto)</h2>
+                            <div class="work-title-main">wellenwanne lfo <span class="work-year">2012</span></div>
+                            <p class="location">Echigo-Tsumari, Japan → New York</p>
+                            <p class="artist-description">將人耳無法聽到的低頻聲音 (LFO) 視覺化。次聲頻透過激發器傳遞到特製水池，在水面形成同心圓漣漪。鏡面反射與燈光創造無限延伸的視覺效果。2013年於 MoMA「Soundings」展覽展出。</p>
+                        </div>
+                    </div>
+                    <div class="links-section">
+                        <div class="links-title">🔗 相關資源</div>
+                        <div class="work-links">
+                            <a href="https://www.moma.org/interactives/exhibitions/2013/soundings/artists/8/works/" target="_blank" class="link-button museum">🏛️ MoMA Soundings</a>
+                            <a href="https://www.carstennicolai.de/?c=works&w=wellenwanne_lfo" target="_blank" class="link-button">🌐 carstennicolai.de</a>
+                            <a href="https://www.flickr.com/photos/mawari/20483887236" target="_blank" class="link-button">📷 Flickr</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 重要資源 -->
+        <div class="info-section">
+            <h2>📚 重要資源與延伸閱讀</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🏛️ 美術館與機構</h3>
+                    <ul>
+                        <li><a href="https://www.moma.org/" target="_blank">MoMA - Museum of Modern Art</a></li>
+                        <li><a href="https://www.tate.org.uk/" target="_blank">Tate Modern & Tate Britain</a></li>
+                        <li><a href="https://www.diaart.org/" target="_blank">Dia Art Foundation</a></li>
+                        <li><a href="https://www.centrepompidou.fr/" target="_blank">Centre Pompidou</a></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>📚 學術資料庫</h3>
+                    <ul>
+                        <li><a href="http://www.medienkunstnetz.de/" target="_blank">Media Art Net</a></li>
+                        <li><a href="https://monoskop.org/" target="_blank">Monoskop</a></li>
+                        <li><a href="https://www.fondazionebonotto.org/" target="_blank">Fondazione Bonotto (Fluxus)</a></li>
+                        <li><a href="https://digitalartarchive.at/" target="_blank">ADA - Archive of Digital Art</a></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>🏠 可親身體驗</h3>
+                    <ul>
+                        <li><strong>Dream House</strong> - 275 Church St, NYC</li>
+                        <li><strong>Times Square</strong> - Broadway & 45-46 St, NYC</li>
+                        <li><strong>Longplayer</strong> - Trinity Buoy Wharf, London</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>📖 參考書目</h3>
+                    <ul>
+                        <li>Holmes, T. <em>Sound Art: Concepts and Practices</em></li>
+                        <li>Licht, A. <em>Sound Art Revisited</em></li>
+                        <li>LaBelle, B. <em>Background Noise</em></li>
+                        <li>Groth, S.K. <em>Bloomsbury Handbook of Sound Art</em></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>📚 資料來源：Thom Holmes《Sound Art: Concepts and Practices》Chapter 1, Figure 1.3</p>
+            <p>以及各美術館典藏資料與藝術家官方網站</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">照片來源：Wikimedia Commons (公有領域或 Creative Commons 授權)</p>
+            <p style="margin-top: 20px; opacity: 0.7;">© 2024 Sound Art Timeline 聲音藝術時間軸</p>
+        </footer>
+    </div>
+</body>
+</html>

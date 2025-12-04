@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聲音裝置藝術資料庫 | Sound Installation Art Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .artist-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .artist-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .artist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .artist-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 25px;
+        }
+        
+        .artist-photo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .artist-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .artist-initials {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .artist-info {
+            flex: 1;
+        }
+        
+        .artist-name {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .artist-years {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        
+        .artist-description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .works-section {
+            margin-top: 25px;
+            border-top: 2px solid #f0f0f0;
+            padding-top: 20px;
+        }
+        
+        .works-title {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .work-item {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .work-item:hover {
+            background: #f0f2f5;
+        }
+        
+        .work-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .work-year {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .work-description {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .work-description ul {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        
+        .work-description li {
+            margin-bottom: 5px;
+        }
+        
+        .tech-info {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            font-size: 0.9em;
+        }
+        
+        .tech-info strong {
+            color: #764ba2;
+        }
+        
+        .work-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        
+        .link-button:hover {
+            background: #764ba2;
+        }
+        
+        .link-website {
+            background: #667eea;
+        }
+        
+        .link-youtube {
+            background: #FF0000;
+        }
+        
+        .link-youtube:hover {
+            background: #CC0000;
+        }
+        
+        .link-vimeo {
+            background: #1ab7ea;
+        }
+        
+        .link-vimeo:hover {
+            background: #1495c3;
+        }
+        
+        .link-download {
+            background: #4caf50;
+        }
+        
+        .link-download:hover {
+            background: #45a049;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            color: #666;
+        }
+        
+        footer a {
+            color: #764ba2;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #764ba2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: scale(1.1);
+            background: #5e3a8e;
+        }
+        
+        .contemporary-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 聲音裝置藝術資料庫</h1>
+            <p class="subtitle">Sound Installation Art Database | 1930s - 2024</p>
+            <p class="subtitle" style="margin-top: 10px; color: #888;">Interactive Sound Art Collection</p>
+        </header>
+
+        <div class="artist-grid">
+            
+            <!-- Max Neuhaus -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://media.soundoflife.com/articles/354/Sound_of_Life_-_Max_Neuhaus.jpg" alt="Max Neuhaus">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Max Neuhaus</h2>
+                        <p class="artist-years">1939-2009 | 美國 🇺🇸</p>
+                        <p class="artist-description">聲音裝置藝術先驅，從打擊樂演奏家轉型為聲音藝術家。創造了「聲音裝置」一詞，作品關注聲音與空間的關係。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Times Square <span class="work-year">(1977-1992, 2002-永久)</span></div>
+                        <div class="work-description">紐約時代廣場地下的永久性聲音裝置。在地鐵通風口下方安裝揚聲器，發出深沉的共鳴聲響，與城市噪音形成對話。觀眾經過時會不經意地發現這個隱藏的聲音層次。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>地下揚聲器系統、聲音合成器、環境聲學設計<br>
+                            <strong>互動性：</strong>被動式 - 觀眾在不知不覺中體驗作品
+                        </div>
+                        <div class="work-links">
+                            <a href="http://www.max-neuhaus.info/soundworks/vectors/place/TIMES_SQUARE/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=FaC0AjLbRZs" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube介紹
+                            </a>
+                            <a href="https://diaart.org/media/watch-listen/max-neuhaus-at-dia-video" target="_blank" class="link-button link-website">
+                                🎬 Dia藝術基金會影片
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Drive-In Music <span class="work-year">(1967-1968)</span></div>
+                        <div class="work-description">在道路兩側安裝無線電發射器，駕駛者經過時可在車內收音機聽到不斷變化的聲音作品，創造移動的音樂體驗。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>FM發射器、多點聲音分布<br>
+                            <strong>互動性：</strong>移動式 - 駕駛速度影響聲音體驗
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Maryanne Amacher -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://www.artforum.com/wp-content/uploads/2020/02/featured00_large-105.jpg" alt="Maryanne Amacher">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Maryanne Amacher</h2>
+                        <p class="artist-years">1938-2009 | 美國 🇺🇸</p>
+                        <p class="artist-description">實驗聲音藝術家，探索心理聲學和建築聲學。創造了「第三隻耳朵」現象，讓聽者感受到聲音在頭腦內部產生。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">City Links <span class="work-year">(1967-1980s)</span></div>
+                        <div class="work-description">透過電話線路將遠端地點的即時聲音傳送到展覽空間。連接了多個城市，創造跨地域的聲音體驗。觀眾可以同時聆聽來自不同城市的聲音景觀。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>電話線路、麥克風陣列、混音器、多聲道播放系統<br>
+                            <strong>互動性：</strong>即時傳輸 - 展現不同地點的同時性
+                        </div>
+                        <div class="work-links">
+                            <a href="https://blanksforms.org/maryanneamacher/" target="_blank" class="link-button link-website">
+                                🌐 檔案網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Music for Sound-Joined Rooms <span class="work-year">(1980-1982)</span></div>
+                        <div class="work-description">為建築空間量身定制的聲音裝置，探索聲音如何在不同房間之間流動和共鳴，創造建築的聲音記憶。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>多房間揚聲器系統、聲學建模、結構傳導<br>
+                            <strong>互動性：</strong>空間探索 - 觀眾移動改變聲音感知
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Sound Characters <span class="work-year">(1979-1990s)</span></div>
+                        <div class="work-description">使用極端頻率創造「耳朵內部音樂」，讓聽者體驗到聲音直接在耳蝸內產生的錯覺。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>耳聲發射（OAE）、心理聲學、頻率調制<br>
+                            <strong>互動性：</strong>生理反應 - 直接刺激聽覺系統
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bill Fontana -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://s.hdnux.com/photos/70/73/65/14925166/3/1200x0.jpg" alt="Bill Fontana">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Bill Fontana</h2>
+                        <p class="artist-years">1947- | 美國 🇺🇸</p>
+                        <p class="artist-description">「聲音雕塑」概念創始人，將聲音視為雕塑材料。作品常將一地的聲音移植到另一地，創造意想不到的聲音經驗。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Sound Island <span class="work-year">(1994)</span></div>
+                        <div class="work-description">在巴黎凱旋門安裝48個揚聲器，播放來自諾曼第海岸的即時海浪聲。紀念D-Day登陸50週年，將和平的海浪聲帶到戰爭紀念碑。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>水下麥克風、衛星傳輸、48聲道系統<br>
+                            <strong>互動性：</strong>環境轉化 - 改變公共空間的聲音感知
+                        </div>
+                        <div class="work-links">
+                            <a href="http://resoundings.org/Pages/sound_island.html" target="_blank" class="link-button link-website">
+                                🌐 作品頁面
+                            </a>
+                            <a href="https://vimeo.com/billfontana" target="_blank" class="link-button link-vimeo">
+                                🎬 Vimeo
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Harmonic Bridge <span class="work-year">(2006)</span></div>
+                        <div class="work-description">將倫敦千禧橋的振動轉化為音樂。使用加速度計捕捉橋樑因行人和風造成的振動，即時轉換成聲音在Tate Modern播放。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>加速度計、即時音頻處理、無線傳輸<br>
+                            <strong>互動性：</strong>結構共鳴 - 橋樑成為巨大樂器
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Silent Echoes: Notre Dame <span class="work-year">(2020)</span></div>
+                        <div class="work-description">巴黎聖母院大火後，記錄十座大鐘內部的共鳴聲音，在Centre Pompidou展出，保存建築的聲音記憶。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>加速度計、接觸式麥克風、10聲道系統<br>
+                            <strong>互動性：</strong>歷史保存 - 聲音考古學
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Liz Phillips -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://alchetron.com/cdn/liz-phillips-1328dfd4-d8c2-4ca3-b1f2-f751b665965-resize-750.jpeg" alt="Liz Phillips">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Liz Phillips</h2>
+                        <p class="artist-years">1951- | 美國 🇺🇸</p>
+                        <p class="artist-description">互動聲音環境創造者，作品回應觀眾的存在和動作。使用感應器技術創造隨觀眾參與而變化的聲音場域。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Sunspots <span class="work-year">(1982-1984)</span></div>
+                        <div class="work-description">使用電容感應技術的互動聲音裝置。觀眾的移動和接近程度調節聲音的音調、音量和音色，創造獨特的聲音舞蹈。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>電容感應器、類比合成器、多聲道系統<br>
+                            <strong>互動性：</strong>身體感應 - 觀眾成為演奏者
+                        </div>
+                        <div class="work-links">
+                            <a href="http://lizphillips.net/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://vimeo.com/132562021" target="_blank" class="link-button link-vimeo">
+                                🎬 作品影片
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Windspun <span class="work-year">(1980-1981)</span></div>
+                        <div class="work-description">首件大型風力啟動聲音裝置，風的動態直接轉化為電子聲音，創造自然與科技的對話。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>風速感測器、音頻合成器、戶外揚聲器<br>
+                            <strong>互動性：</strong>環境驅動 - 自然力量創造音樂
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Echo Evolution <span class="work-year">(2002)</span></div>
+                        <div class="work-description">在紐約公園大道隧道創作的聲音裝置，使用動作感測器和聲音處理，將行人和車輛的移動轉化為音樂。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>紅外線感測器、即時聲音處理<br>
+                            <strong>互動性：</strong>城市節奏 - 交通流量決定音樂節奏
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Janet Cardiff -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/JanetCardiff_Berlin2009.jpg/250px-JanetCardiff_Berlin2009.jpg" alt="Janet Cardiff">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Janet Cardiff</h2>
+                        <p class="artist-years">1957- | 加拿大 🇨🇦</p>
+                        <p class="artist-description">與George Bures Miller合作，創作沈浸式聲音裝置和音頻步行作品。運用雙耳錄音技術創造超現實的聽覺體驗。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">The Forty Part Motet <span class="work-year">(2001)</span></div>
+                        <div class="work-description">40個揚聲器圍成橢圓形，每個播放Thomas Tallis 16世紀合唱曲的單一聲部。觀眾可在中央聆聽完整合唱，或走近個別揚聲器聽單一人聲。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>40軌錄音、40個揚聲器、空間音響設計<br>
+                            <strong>互動性：</strong>空間探索 - 觀眾移動改變聲音體驗
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.cardiffmiller.com/artworks/inst/motet.html" target="_blank" class="link-button link-website">
+                                🌐 官方頁面
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=OxIeulpigws" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube
+                            </a>
+                            <a href="https://vimeo.com/130412478" target="_blank" class="link-button link-vimeo">
+                                🎬 Vimeo
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="work-item">
+                        <div class="work-title">The Murder of Crows <span class="work-year">(2008)</span></div>
+                        <div class="work-description">98個揚聲器和一台留聲機創造的夢境聲音裝置，觀眾坐在中央體驗環繞的聲音敘事。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>98聲道系統、Ambisonic錄音<br>
+                            <strong>互動性：</strong>沉浸式敘事 - 聲音從四面八方包圍
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.cardiffmiller.com/artworks/inst/murder_of_crows.html" target="_blank" class="link-button link-website">
+                                🌐 作品資訊
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Céleste Boursier-Mougenot -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Céleste_Boursier-Mougenot_%28UNTREF_-_Bienal_Sur_2016%29.jpg/250px-Céleste_Boursier-Mougenot_%28UNTREF_-_Bienal_Sur_2016%29.jpg" alt="Céleste Boursier-Mougenot">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Céleste Boursier-Mougenot</h2>
+                        <p class="artist-years">1961- | 法國 🇫🇷</p>
+                        <p class="artist-description">將展覽空間轉化為活體樂器。作品常涉及動物、水、物體的自然運動產生的聲音，創造詩意的聲音生態系統。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">from here to ear <span class="work-year">(1999-ongoing)</span></div>
+                        <div class="work-description">將展覽空間改造成鳥舍，放置70-88隻斑胸草雀。電吉他和貝斯橫放在空間中，鳥兒的棲息、跳躍和啄食創造出隨機的音樂。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>電吉他、貝斯、擴大器、鳥舍設計<br>
+                            <strong>互動性：</strong>生態系統 - 生物與樂器的共生演奏
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.youtube.com/watch?v=stFyG_AAje8" target="_blank" class="link-button link-youtube">
+                                ▶️ 哥本哈根展覽
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=S0pHqmQQmSo" target="_blank" class="link-button link-youtube">
+                                ▶️ 蒙特婁展覽
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=8sV5TSJz5XU" target="_blank" class="link-button link-youtube">
+                                📹 倫敦Barbican版
+                            </a>
+                            <a href="https://vimeo.com/19401469" target="_blank" class="link-button link-vimeo">
+                                🎬 Hangar Bicocca版
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">clinamen <span class="work-year">(2013)</span></div>
+                        <div class="work-description">白瓷碗漂浮在水池中，隨水流碰撞發出清脆聲響，創造禪意的聲音環境。標題引用古羅馬哲學家盧克萊修的概念。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>瓷碗、水池、水泵系統、接觸式麥克風<br>
+                            <strong>互動性：</strong>自然動力 - 水流創造節奏
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">acquaalta <span class="work-year">(2015)</span></div>
+                        <div class="work-description">威尼斯雙年展作品，將樹木放置在水池中的平台上，水位隨潮汐變化，創造視覺與聽覺的雙重體驗。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>水泵、感測器、活體植物<br>
+                            <strong>互動性：</strong>潮汐模擬 - 自然週期的再現
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rafael Lozano-Hemmer -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://mocajacksonville.unf.edu/-images/exhibitions/project-atrium/rafael-lozano-hemmer/lozano-hemmer-portrait.jpg" alt="Rafael Lozano-Hemmer">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Rafael Lozano-Hemmer</h2>
+                        <p class="artist-years">1967- | 墨西哥-加拿大 🇲🇽🇨🇦</p>
+                        <p class="artist-description">電子藝術家，創作大型互動裝置。作品結合生物識別、數據視覺化和建築投影，探討監控、連結和公共空間。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Pulse Room <span class="work-year">(2006)</span></div>
+                        <div class="work-description">房間內懸掛100-300個白熾燈泡。觀眾握住感應器，燈泡隨心跳節奏閃爍。系統記錄並播放最近300個參與者的心跳，創造心跳交響曲。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>心跳感應器、電腦控制系統、白熾燈陣列<br>
+                            <strong>互動性：</strong>生物數據轉化 - 將生命訊號轉為光影節奏
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.lozano-hemmer.com/pulse_room.php" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://vimeo.com/30379391" target="_blank" class="link-button link-vimeo">
+                                🎬 高畫質影片
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=0hJfJKRXing" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube
+                            </a>
+                            <a href="https://vimeo.com/33927355" target="_blank" class="link-button link-vimeo">
+                                📹 ARoS美術館版
+                            </a>
+                            <a href="https://vimeo.com/33929373" target="_blank" class="link-button link-vimeo">
+                                🎥 威尼斯雙年展版
+                            </a>
+                            <a href="https://www.lozano-hemmer.com/videos.php" target="_blank" class="link-button link-download">
+                                📥 下載高清影片
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Pulse Topology <span class="work-year">(2021)</span></div>
+                        <div class="work-description">3000個LED燈泡，無接觸式心跳感測，創造更複雜的視聽體驗。加入聲音元素，心跳轉化為節奏。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>雷達感測、LED控制、聲音合成、機器學習<br>
+                            <strong>互動性：</strong>無接觸感應 - 遠距偵測生理訊號
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Border Tuner <span class="work-year">(2019)</span></div>
+                        <div class="work-description">連接美國與墨西哥邊界兩側城市的光橋，參與者可透過光束和聲音與對岸交流。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>探照燈、拋物面揚聲器、網路連接<br>
+                            <strong>互動性：</strong>跨境對話 - 打破物理邊界
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Susan Philipsz -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://www.artsandheritage.org.uk/wp-content/uploads/2022/03/Susan-Philipsz-at-Belsay.jpeg" alt="Susan Philipsz">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Susan Philipsz</h2>
+                        <p class="artist-years">1965- | 蘇格蘭 🏴󐁧󐁢󐁳󐁣󐁴󐁿</p>
+                        <p class="artist-description">2010年特納獎得主，首位以聲音作品獲獎的藝術家。使用自己的歌聲在公共空間創造情感共鳴。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Lowlands <span class="work-year">(2010)</span></div>
+                        <div class="work-description">在格拉斯哥克萊德河上三座橋下安裝揚聲器，播放藝術家演唱的16世紀蘇格蘭民謠。歌曲講述溺水愛人的故事，與河流歷史呼應。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>三軌錄音、戶外揚聲器系統<br>
+                            <strong>互動性：</strong>場域特定 - 聲音喚起地點記憶
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">War Damaged Musical Instruments <span class="work-year">(2015)</span></div>
+                        <div class="work-description">錄製戰爭中受損樂器的聲音，在博物館中播放，探討衝突與記憶。這些樂器來自柏林的樂器博物館收藏。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>多聲道錄音、空間音響<br>
+                            <strong>互動性：</strong>歷史對話 - 聲音見證歷史
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.tate.org.uk/art/artworks/philipsz-war-damaged-musical-instruments-t14843" target="_blank" class="link-button link-website">
+                                🌐 Tate收藏
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=ZBKyMOw6d5c" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube紀錄
+                            </a>
+                            <a href="https://vimeo.com/147297073" target="_blank" class="link-button link-vimeo">
+                                🎬 展覽影片
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">SURROUND ME <span class="work-year">(2000)</span></div>
+                        <div class="work-description">在倫敦地鐵站演唱Roberta Flack的歌曲，探討公共與私密空間的界線。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>多點錄音、地鐵廣播系統<br>
+                            <strong>互動性：</strong>日常介入 - 打破通勤的單調
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Zimoun -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://waveinformer.com/wp-content/uploads/2024/09/Portrait-Zimoun_portrait_by_peter_hauser.jpg" alt="Zimoun">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Zimoun</h2>
+                        <p class="artist-years">1977- | 瑞士 🇨🇭</p>
+                        <p class="artist-description">創造極簡主義聲音雕塑。使用簡單的機械元件如馬達、電線、紙箱，大量重複創造複雜的聲音紋理。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">329 prepared dc-motors, cotton balls <span class="work-year">(2013)</span></div>
+                        <div class="work-description">329個小馬達帶動棉球撞擊紙箱壁面，產生如雨聲般的節奏。簡單元件的大量累積創造出有機的聲音景觀。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>DC馬達、棉球、紙箱、電源控制<br>
+                            <strong>互動性：</strong>沉浸式 - 觀眾被聲音包圍
+                        </div>
+                        <div class="work-links">
+                            <a href="https://zimoun.net/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://vimeo.com/zimoun" target="_blank" class="link-button link-vimeo">
+                                🎬 Vimeo作品集
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=nzybYC5nqJM" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube影片
+                            </a>
+                            <a href="https://vimeo.com/67802375" target="_blank" class="link-button link-vimeo">
+                                📹 329馬達裝置影片
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">600 prepared dc-motors <span class="work-year">(2017)</span></div>
+                        <div class="work-description">600個馬達驅動木棍旋轉敲擊，創造密集的節奏層次，聲音如同機械雨林。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>大規模馬達陣列、木材、控制系統<br>
+                            <strong>互動性：</strong>環繞式 - 聲音從四面八方湧來
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">658 prepared dc-motors, cotton balls, cardboard boxes <span class="work-year">(2021)</span></div>
+                        <div class="work-description">迄今最大規模的裝置，658個馬達創造出洶湧的聲音海洋。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>工業規模馬達控制、模組化設計<br>
+                            <strong>互動性：</strong>建築尺度 - 整個空間成為樂器
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- teamLab -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Teamlab_logo_RGB_color.png/250px-Teamlab_logo_RGB_color.png" alt="teamLab">
+                    </div>
+                    <div class="artist-info">
+                        <a href="https://www.teamlab.art"><h2 class="artist-name">teamLab</h2></a>
+                        <p class="artist-years">2001- | 日本 🇯🇵</p>
+                        <p class="artist-description">跨領域藝術團體，創造大型沉浸式數位藝術裝置。作品融合藝術、科學、技術和自然，探索人與世界的新關係。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">teamLab Borderless <span class="work-year">(2024重新開幕)</span></div>
+                        <div class="work-description">東京麻布台Hills的10,000平方公尺無邊界數位藝術博物館。作品相互連結流動，觀眾身體成為作品一部分，聲音隨互動即時生成。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>投影映射、感應器、即時運算、空間音響<br>
+                            <strong>互動性：</strong>全身沉浸 - 觀眾動作影響視覺與聲音
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.teamlab.art/e/tokyo/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=3F6E1VH8wok" target="_blank" class="link-button link-youtube">
+                                ▶️ 2024官方影片
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=kpzM4ibsAao" target="_blank" class="link-button link-youtube">
+                                📹 展覽導覽
+                            </a>
+                            <a href="https://www.klook.com/activity/65145-teamlab-borderless-tokyo/" target="_blank" class="link-button link-website">
+                                🎫 購票連結
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">teamLab Planets <span class="work-year">(2018-2027)</span></div>
+                        <div class="work-description">豐洲的觸覺體驗空間，包含水池、鏡面空間等身體沉浸式環境。觀眾赤腳進入，成為作品的一部分。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>水體感應、鏡面投影、觸覺反饋<br>
+                            <strong>互動性：</strong>身體參與 - 赤腳涉水體驗
+                        </div>
+                        <div class="work-links">
+                            <a href="https://planets.teamlab.art/" target="_blank" class="link-button link-website">
+                                🌐 官方網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Infinite Crystal World <span class="work-year">(2018-ongoing)</span></div>
+                        <div class="work-description">LED光點創造的無限水晶世界，觀眾使用手機選擇元素投入空間，影響整體視覺與聲音。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>LED陣列、手機互動、即時渲染<br>
+                            <strong>互動性：</strong>參與創作 - 觀眾共同創造作品
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tim Murray-Browne -->
+            <div class="artist-card">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <img src="http://thisfloatingworld.com/img/tim_murray-browne-400.jpg" alt="Tim Murray-Browne">
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">Tim Murray-Browne</h2>
+                        <p class="artist-years">1982- | 英國 🇬🇧</p>
+                        <p class="artist-description">藝術家與創意技術專家，創作互動聲音裝置探索人類創造力與AI的交集。作品邀請觀眾透過身體動作創造音樂。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 主要作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Cave of Sounds <span class="work-year">(2012-2018)</span></div>
+                        <div class="work-description">8件獨特的互動樂器組成的合作音樂裝置。每件樂器由不同藝術家設計，觀眾共同演奏創造集體音樂體驗。獲2014年Sonic Arts Prize。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>客製感應器、Arduino、SuperCollider、8聲道系統<br>
+                            <strong>互動性：</strong>協作演奏 - 觀眾成為樂團
+                        </div>
+                        <div class="work-links">
+                            <a href="https://caveofsounds.com/" target="_blank" class="link-button link-website">
+                                🌐 專案網站
+                            </a>
+                            <a href="https://vimeo.com/79104655" target="_blank" class="link-button link-vimeo">
+                                🎬 官方影片
+                            </a>
+                            <a href="https://vimeo.com/75531542" target="_blank" class="link-button link-vimeo">
+                                📹 Barbican展覽
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=zIWUWfh5sYQ" target="_blank" class="link-button link-youtube">
+                                ▶️ YouTube紀錄
+                            </a>
+                            <a href="https://timmb.com/cave-of-sounds/" target="_blank" class="link-button link-website">
+                                🌐 藝術家網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">The Wilds <span class="work-year">(2020-2023)</span></div>
+                        <div class="work-description">探索人類與AI即時互動的聲音裝置，觀眾動作影響AI生成的聲音景觀，創造人機共舞。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>機器學習、動作捕捉、即時聲音合成<br>
+                            <strong>互動性：</strong>AI協作 - 人機共創音樂
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Movement Alphabet <span class="work-year">(2010)</span></div>
+                        <div class="work-description">使用Kinect感測器追蹤觀眾動作，不同的身體姿態產生不同聲音，創造身體語言的音樂化。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>Kinect、OpenNI、實時音頻合成<br>
+                            <strong>互動性：</strong>全身控制 - 身體成為樂器
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2024年當代作品 -->
+            <div class="artist-card contemporary-section">
+                <div class="artist-header">
+                    <div class="artist-photo">
+                        <span class="artist-initials">24</span>
+                    </div>
+                    <div class="artist-info">
+                        <h2 class="artist-name">2024年當代作品選</h2>
+                        <p class="artist-years">最新互動聲音藝術 | Contemporary Works</p>
+                        <p class="artist-description">2024年最新的互動聲音藝術作品，展現當代科技與聲音藝術的最新發展，包括AI、生物感測、機器學習等技術應用。</p>
+                    </div>
+                </div>
+                <div class="works-section">
+                    <h3 class="works-title">🎨 精選作品</h3>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Reembodied Sound 2024 (EMPAC) <span class="work-year">2024</span></div>
+                        <div class="work-description">
+                            在紐約EMPAC展出的系列作品，包括使用骨傳導、超音波感測器和機器學習技術的多個互動裝置。
+                            <ul>
+                                <li><strong>Women's Labor：</strong>將家用熨斗改造成樂器，使用光譜儀、LIDAR感測器</li>
+                                <li><strong>Fenestra：</strong>五聲道空間聲音裝置，聲音在透明面板間流動</li>
+                                <li><strong>Embedded Iron：</strong>使用機器學習讀取布料顏色和質地產生音樂</li>
+                            </ul>
+                        </div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>LIDAR、機器學習、骨傳導、空間音響<br>
+                            <strong>互動性：</strong>多感官融合 - 觸覺、視覺轉化為聲音
+                        </div>
+                        <div class="work-links">
+                            <a href="https://empac.rpi.edu/events/2024/reembodied-sound/" target="_blank" class="link-button link-website">
+                                🌐 展覽網站
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Sound Scene 2024 - Solstice <span class="work-year">2024</span></div>
+                        <div class="work-description">史密森尼博物館Hirshhorn Museum舉辦的年度聲音藝術節，主題為「至日」，探索平衡的聲音、陽光照亮和黑暗中的寧靜。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>多點聲音裝置、環境感測<br>
+                            <strong>互動性：</strong>時間感知 - 隨日照變化的聲音
+                        </div>
+                        <div class="work-links">
+                            <a href="https://soundscenefest.org/" target="_blank" class="link-button link-website">
+                                🌐 藝術節官網
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="work-item">
+                        <div class="work-title">Bubble Universe <span class="work-year">2024</span></div>
+                        <div class="work-description">teamLab Borderless新增的沉浸式光球裝置。無數發光的球體在空間中漂浮，每個球體內包含不同的光現象，探索認知與存在的概念。</div>
+                        <div class="tech-info">
+                            <strong>技術：</strong>LED球體、感應器、即時運算、環境光控制<br>
+                            <strong>互動性：</strong>感知探索 - 光現象隨觀眾移動而變化
+                        </div>
+                        <div class="work-links">
+                            <a href="https://www.teamlab.art/w/bubbleuniverse/" target="_blank" class="link-button link-website">
+                                🌐 作品介紹
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <footer>
+            <p>📚 參考資源 Reference</p>
+            <p>主要文獻：Sound Art Revisited (Alan Licht) | Sound Art: Concepts and Practices (Thom Holmes)</p>
+            <p>The Bloomsbury Handbook of Sound Art (Sanne Krogh Groth) | Background Noise (Brandon LaBelle)</p>
+            <p style="margin-top: 15px;">
+                🔗 推薦網站：
+                <a href="http://soundartarchive.net/" target="_blank">Sound Art Archive</a> | 
+                <a href="https://www.sfu.ca/~westerka/" target="_blank">World Soundscape Project</a> |
+                <a href="https://rwm.macba.cat/" target="_blank">Ràdio Web MACBA</a>
+            </p>
+            <p style="margin-top: 20px; color: #888;">© 2024 聲音裝置藝術資料庫 | 本網站為教育與研究用途</p>
+            <p style="color: #888;">所有作品版權歸原創作者所有</p>
+        </footer>
+    </div>
+    
+    <div class="back-to-top" onclick="scrollToTop()">↑</div>
+    
+    <script>
+        // 回到頂部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 顯示/隱藏回到頂部按鈕
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
