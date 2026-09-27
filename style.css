@@ -1165,6 +1165,10 @@ footer.entry-meta .tags a:before{
 	cursor:  pointer;
 }
 
+.music-list li.comment .comment-content {
+	margin-left: 180px;
+}
+
 .commentlist li.comment .comment-content .progress-holder {
 	background-color: #ffffff;
 	border:  1px solid;

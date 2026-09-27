@@ -169,6 +169,26 @@
 	.commentlist .children li.comment {
 		margin: 20px 0 0 20px;
 	}
+	/* Music page: keep the photos (they are the play buttons), stacked above the title */
+	.music-list li.comment .avatar {
+		display: block;
+		width: 100%;
+		max-width: 400px;
+		margin: 0 auto 10px;
+	}
+	.music-list li.comment .avatar a {
+		display: block;
+	}
+	.music-list li.comment .avatar a span {
+		width: 100%;
+	}
+	.music-list li.comment .avatar img {
+		width: 100%;
+		height: auto;
+	}
+	.music-list li.comment .comment-content {
+		margin: 0;
+	}
 }
 
 @media (max-width: 320px) {
